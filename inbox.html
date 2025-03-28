@@ -1,0 +1,2972 @@
+<!doctype html>
+<html lang="en" class="h-100">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Mimosa</title>
+		<link rel="icon" href="icons/star.svg" type="image/x-icon">
+		<link rel="stylesheet" href="css/bootstrap-icons.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<!--link href="css/mimosa.css" rel="stylesheet"-->
+		<!--script src="js/bootstrap.bundle.min.js"></script-->
+		<!--script src="js/jquery-3.6.3.min.js"></script-->
+		<!--script src="js/jquery-ui.min.js"></script-->
+		<!--script src="js/mimosa v2.js"></script-->
+		
+		<style>
+/*                */
+/* Root (default) */
+/*                */
+:root {
+	/* Colours */
+	--mm-blue-600: #0a58ca;
+	--mm-blue-700: #084298;
+	--mm-blue-800: #052c65;
+	--mm-blue-900: #031633;
+	--ma-indigo-600: #520dc2;
+	--ma-indigo-700: #3d0a91;
+	--ma-indigo-800: #290661;
+	--ma-indigo-900: #140330;
+	--mm-purple-800: #2c1a4d;
+	--mm-pink-800: #561435;
+	--mm-red-800: #58151c;
+	--mm-orange-800: #653208;
+	--mm-yellow-800: #664d03;
+	--mm-green-800: #0a3622;
+	--mm-teal-800: #0d503c;
+	--mm-cyan-800: #055160;
+	--mm-gray-600-rgb: 108,117,125;
+	--mm-gray-400-rgb: 206,212,218;
+	--ma-blue-600: 010,088,202;
+	/* Theme main colour */
+	--ma-theme-bg: var(--mm-blue-800);
+	--ma-theme-bg-lite: rgba(var(--ma-blue-600), 0.2);
+	--ma-theme-bg-darker: var(--mm-blue-800);
+	--ma-theme-bg-hover: var(--mm-blue-900);
+	--ma-theme-border-color: var(--ma-theme-bg);
+	/* Navbar */
+	--ma-theme-color: var(--bs-gray-100);
+	--ma-theme-color-contrast: var(--bs-gray-900);
+	--ma-theme-color-gray: var(--bs-gray-600);
+	/* Main background colours */
+	--ma-main-bg: var(--bs-gray-300);
+	--ma-input-bg: var(--bs-gray-300);
+	--ma-input-color: var(--bs-gray-600);
+	--mm-list-group-bg: transparent;
+	/* Panel colours*/
+	--ma-panel-bg: var(--bs-gray-100);
+	--ma-panel-color: var(--bs-gray-800);
+	/* Actions colours */
+	--ma-action-hover-bg: var(--bs-gray-300);
+	/* Mail colours */
+	--ma-mail-icon-bg: var(--bs-gray-600);
+	--ma-mail-icon-color: var(--bs-gray-300);
+	--ma-mail-list-body-color: var(--bs-gray-600);
+	--ma-maillist-hover-bg: var(--bs-gray-400);
+	--ma-maillist-active-bg: var(--bs-gray-600);
+	--ma-maillist-active-hover-bg: var(--bs-gray-600);
+}
+/*         */
+/* General */
+/*         */
+#main {
+	background: var(--ma-main-bg);
+}
+.panel {
+	background: var(--ma-panel-bg);
+	color: var(--ma-panel-color);
+	border: 0;
+}
+#content {
+/*	padding: 0px 8px 6px 8px;*/
+}
+.pagination .disabled * {
+	background-color: transparent;
+	color: var(--mm-theme-color-disabled);
+	border-color: transparent;
+	border-radius: 0;
+}
+.pagination  * {
+	background-color: transparent;
+	color: var(--mm-theme-color-secondary);
+	border-color: transparent;
+	border-radius: 0;
+}
+#maillist .list-group-item {
+	color: var(--ma-panel-color);
+}
+#maillist .list-group-item::after {
+	position: absolute;
+	content: '';
+	width: 100%;
+	height: 100%;
+	background: transparent;
+}
+#maillist .list-group-item:hover:after {
+	background: var(--ma-theme-border-color);
+	opacity: 0.2;
+}
+#maillist .list-group-item:hover .unread-item {
+	background: var(--ma-theme-border-color);
+	opacity: 0.6;
+}
+#maillist .list-group-item.active {
+	background: var(--ma-maillist-active-bg);
+}
+#maillist .list-group-item.active:hover {
+	background: var(--ma-maillist-active-hover-bg);
+}
+#maillist .list-group-item.unread:hover .unread-item {
+	opacity: 1;
+}
+
+#mailpanel {
+	padding: 0 2px 0 6px;
+	color: var(--ma-panel-color);
+}
+#mail-header, #mail-body, #empty-mail {
+//	background: var(--ma-panel-bg);
+/*	background: white;*/
+	color: var(--ma-panel-color);
+}
+#empty-mail {
+	color: var(--ma-mail-list-body-color);
+	opacity: 0.5;
+}
+.form-control, .form-select {
+	background: var(--ma-input-bg);
+	color: var(--ma-input-color);
+	border-color: var(--ma-input-color);
+}
+.form-select {
+	--bs-form-select-bg-img: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%236c757d' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+	background-image: var(--bs-form-select-bg-img),var(--bs-form-select-bg-icon,none);
+	background-repeat: no-repeat;
+	background-position: right .75rem center;
+	background-size: 16px 12px;
+}
+.form-control::placeholder {
+	color: var(--ma-theme-color-gray);
+}
+.form-control:focus {
+	background: var(--mm-body-bg);
+	color: var(--mm-theme-color);
+}
+.form-select.sender, .form-control.recipient, .form-control.object, .form-control.body {
+	background-color: var(--ma-panel-bg);
+	border-color: rgba(var(--bs-secondary-rgb),var(--bs-border-opacity));
+	border-radius: 0;
+}
+.form-select.sender:focus, .form-control.recipient:focus, .form-control.object:focus, .form-control.body:focus {
+	outline:none !important;
+	outline-width: 0 !important;
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+}
+.input-group-text {
+	border-width: var(--bs-border-width);
+	border-style: solid;
+	border-color: rgba(var(--bs-secondary-rgb),var(--bs-border-opacity));
+//	border: var(--bs-border-width) solid var(--bs-border-color);
+}
+#colours label.theme {
+	border: 4px solid transparent;
+}
+#colours label.theme div {
+	border-radius: 50%;
+	width: 34px;
+	height: 34px;
+}
+#colours label.theme div i {
+	display: block;
+	margin-top: -5px;
+}
+label[for^="s"] {
+	border: 3px solid transparent;
+}
+label[for^="sWhite"], label[for^="sGray"] {
+	width: 120px;
+}
+/* Switch */
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 40px;
+	height: 20px;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: .4s;
+	transition: .4s;
+	border-radius: 34px;
+	margin-top: 2px;
+}
+.switch:before {
+	position: absolute;
+	content: "";
+	height: 12px;
+	width: 12px;
+	left: 4px;
+	bottom: 4px;
+	background-color: var(--ma-theme-border-color);
+	-webkit-transition: .4s;
+	transition: .4s;
+	border-radius: 50%;
+}
+[id="cDark"]:checked~#modalSettings .switch {
+	background-color: var(--ma-theme-bg);
+}
+[id="cDark"]:focus~#modalSettings .switch {
+	box-shadow: 0 0 1px var(--ma-theme-border-color);
+}
+[id="cDark"]:checked~#modalSettings .switch:before {
+	-webkit-transform: translateX(20px);
+	-ms-transform: translateX(20px);
+	transform: translateX(20px);
+	background-color: white;
+}
+
+label.layout {
+	border: 3px solid transparent;
+	width: 180px;
+}
+.mm-title {
+	color: var(--ma-theme-color);
+	background-color: var(--ma-theme-bg);
+}
+#pagination {
+	background: var(--mm-body-bg);
+}
+.unread .unread-item {
+	background-color: var(--ma-theme-border-color);
+}
+.unread .mail-list-from, .unread .mail-list-subject, .unread .mail-date {
+	font-weight: 600;
+}
+.mail-list-from, .mail-list-subject, .mail-list-body {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.mail-list-body {
+	color: var(--ma-mail-list-body-color);
+}
+.mail-icon {
+	color: var(--ma-mail-icon-color);
+	background: var(--ma-mail-icon-bg);
+}
+.list-group-item {
+  background-color: var(--mm-list-group-bg);
+}
+.list-group-item-action:focus, .list-group-item-action:hover {
+	background-color: var(--mm-list-group-action-hover-bg);
+	color: var(--mm-theme-color-secondary);
+}
+/*          */
+/* Backdrop */
+/*          */
+#main::after {
+	background: #000;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	content: '';
+	opacity: 0.5;
+	z-index: 1008;
+	display: none;
+}
+@keyframes hide-backdrop {
+	from {opacity: 0.5;}
+	to {opacity: 0;}
+}
+@keyframes show-backdrop {
+	from {opacity: 0;}
+	to {opacity: 0.5;}
+}
+/*       */
+/* Modal */
+/*       */
+#modalSettings .modal-dialog {
+	--bs-modal-width: 75%;
+}
+.modal {
+	--bs-modal-inner-border-radius: 0;
+	--bs-modal-border-radius: 0;
+}
+.modal .nav .nav-link {
+	color: var(--mm-theme-color-secondary);
+}
+.modal-content {
+	color: var(--ma-panel-color);
+}
+@keyframes hide-modal {
+	from {opacity: 1;}
+	to {opacity: 0;}
+}
+@keyframes show-modal {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+/*            */
+/* Scrollbars */
+/*            */
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: dark gray;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: gray;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: dark;
+  border-radius: 2px;
+  border: 3px solid gray;
+}
+/*        */
+/* Navbar */
+/*        */
+.navbar-brand, .navbar-text {
+	color: var(--ma-theme-color);
+}
+.navbar-brand:hover, .navbar-text:hover {
+	--bs-navbar-hover-color: var(--ma-theme-color);
+	color: var(--ma-theme-color);
+}
+.btn-outline-settings, .btn-outline-navbar, .btn-outline-search {
+	--bs-btn-color: var(--ma-theme-color);
+	--bs-btn-border-color: var(--ma-theme-color);
+	--bs-btn-hover-color: var(--ma-theme-color-contrast);
+	--bs-btn-hover-bg: var(--ma-theme-color);
+	--bs-btn-hover-border-color: var(--ma-theme-color);
+	--bs-btn-focus-shadow-rgb: var(--mm-btn-navbar-focus-shadow-rgb);
+	--bs-btn-active-color: var(--ma-theme-color-contrast);
+	--bs-btn-active-bg: var(--ma-theme-color);
+	--bs-btn-active-border-color: var(--ma-theme-color);
+	--bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+	--bs-btn-disabled-color: var(--ma-theme-color);
+	--bs-btn-disabled-bg: transparent;
+	--bs-btn-disabled-border-color: var(--ma-theme-color);
+	--bs-gradient: none;
+}
+.btn-outline-search {
+	--bs-btn-border-color: var(--ma-input-color);
+}
+.btn-create {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--ma-theme-bg-darker);
+  --bs-btn-border-color: var(--ma-theme-bg-darker);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--ma-theme-bg-hover)!important;
+  --bs-btn-hover-border-color: var(--ma-theme-bg-hover);
+  --bs-btn-focus-shadow-rgb: 60,153,110;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--ma-theme-bg-darker);
+  --bs-btn-active-border-color: var(--ma-theme-bg-darker);
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: var(--bs-gray-400);
+  --bs-btn-disabled-border-color: var(--bs-gray-400);
+}
+.dropdown-menu {
+	top: 100%;
+	left: 0;
+	margin-top: var(--bs-dropdown-spacer);
+}
+/*            */
+/* Action bar */
+/*            */
+#menu label {
+  color: var(--ma-panel-color);
+}
+.actions .btn-outline-secondary {
+  --bs-btn-hover-bg: var(--ma-action-hover-bg);
+}
+.actions li {
+	height: 38px;
+}
+.actions li.vr {
+	height: 30px!important;
+}
+.actions {
+/*	height: 38px;*/
+}
+@media screen and (max-width: 700px) {
+	.actions {
+/*		height: 38px;
+		overflow-x: auto;
+		overflow-y: hidden;*/
+	}
+}
+#moreactions.dropdown-toggle::after {
+	display: none;
+}
+/*                      */
+/* Left panel (sidebar) */
+/*                      */
+#sidebar {
+	background-color: var(--mm-sidebar-bg);
+/*	margin-right: 6px;*/
+}
+/* Left panel : appGroupList */
+#appGroupList {
+	width: 40px;
+}
+#appGroupList .list-group-item {
+	background: var(--bg-transparent);
+	border: 0;
+	height: 60px;
+	border-right: 4px solid transparent;
+	color: var(--ma-sidebar-color);
+	margin: 0;
+}
+#appGroupList .list-group-item.active {
+	border-right: 4px solid var(--ma-sidebar-active-bg);
+	margin: 0;
+}
+/* Left panel : appList */
+#appList {
+	border-left: 1px solid var(--ma-sidebar-active-bg);
+}
+#appList .list-group {
+	--bs-list-group-color: var(--mm-sidebar-color);
+	--bs-list-group-bg: transparent;
+	--bs-list-group-border-color: transparent;
+	--bs-list-group-action-hover-color: var(--mm-sidebar-color);
+	--bs-list-group-action-hover-bg: var(--mm-sidebar-bg-hover);
+	--bs-list-group-active-color: var(--mm-sidebar-list-group-active-color);
+	--bs-list-group-active-bg: var(--mm-sidebar-list-group-active-bg);
+	--bs-list-group-active-border-color: var(--mm-sidebar-list-group-active-border-color);
+}
+#sidebar {
+	background-color: var(--ma-sidebar-bg);
+	color: var(--ma-sidebar-color);
+}
+#sidebar .list-group-item:hover {
+	background-color: var(--ma-sidebar-bg-hover);
+}
+#appList .list-group-item {
+	border-width: 0;
+}
+#appList .list-group-item.active {
+	background-color: var(--ma-sidebar-active-bg);
+	color: var(--ma-sidebar-active-color);
+}
+#appList .list-group-item.active:hover {
+	background-color: var(--ma-sidebar-active-bg-hover);
+}
+/*              */
+/* Main content */
+/*              */
+/* Checkboxes and radio buttons */
+[id="nSettings"]:checked~#modalSettings,
+[id="nUser"]:checked~#modalUser,
+[id="nLogout"]:checked~#modalLogout {
+	display: block;
+	animation: 0.1s show-modal forwards;
+}
+[modal="true"]:checked~#main::after {
+	display: block;
+	animation: 0.2s show-backdrop forwards;
+}
+@media screen and (max-width: 700px) {
+	#search-options {
+		width: 100%;
+		position: fixed;
+		top: 40px;
+		--bs-dropdown-zindex: 1009;
+	}
+	[id="searchOptions"]:checked~#main::after {
+		display: block;
+		animation: 0.2s show-backdrop forwards;
+	}
+	.modal.fade .modal-dialog {
+		transform: translate(0,0);
+	}
+}
+[id="searchOptions"]:checked~#top-panel #search-options {
+	display: block;
+}
+[id="userOptions"]:checked~#top-panel #user-options {
+	display: block;
+}
+/* Modal settings : Label border */
+[id="tLight"]:checked~div #colours label[for="tLight"],
+[id="tGray"]:checked~div #colours label[for="tGray"],
+[id="tWhite"]:checked~div #colours label[for="tWhite"],
+[id="tDark"]:checked~div #colours label[for="tDark"],
+[id="tBlue"]:checked~div #colours label[for="tBlue"],
+[id="tBlue-700"]:checked~div #colours label[for="tBlue-700"],
+[id="tBlue-800"]:checked~div #colours label[for="tBlue-800"],
+[id="tBlue-900"]:checked~div #colours label[for="tBlue-900"],
+[id="tIndigo"]:checked~div #colours label[for="tIndigo"],
+[id="tIndigo-600"]:checked~div #colours label[for="tIndigo-600"],
+[id="tIndigo-700"]:checked~div #colours label[for="tIndigo-700"],
+[id="tIndigo-800"]:checked~div #colours label[for="tIndigo-800"],
+[id="tIndigo-900"]:checked~div #colours label[for="tIndigo-900"],
+[id="tPurple"]:checked~div #colours label[for="tPurple"],
+[id="tPurple-800"]:checked~div #colours label[for="tPurple-800"],
+[id="tPink"]:checked~div #colours label[for="tPink"],
+[id="tPink-800"]:checked~div #colours label[for="tPink-800"],
+[id="tRed"]:checked~div #colours label[for="tRed"],
+[id="tRed-800"]:checked~div #colours label[for="tRed-800"],
+[id="tOrange"]:checked~div #colours label[for="tOrange"],
+[id="tOrange-800"]:checked~div #colours label[for="tOrange-800"],
+[id="tYellow"]:checked~div #colours label[for="tYellow"],
+[id="tYellow-800"]:checked~div #colours label[for="tYellow-800"],
+[id="tGreen"]:checked~div #colours label[for="tGreen"],
+[id="tGreen-800"]:checked~div #colours label[for="tGreen-800"],
+[id="tTeal"]:checked~div #colours label[for="tTeal"],
+[id="tTeal-800"]:checked~div #colours label[for="tTeal-800"],
+[id="tCyan"]:checked~div #colours label[for="tCyan"],
+[id="tCyan-800"]:checked~div #colours label[for="tCyan-800"] {
+	border: 4px solid var(--ma-theme-border-color);
+	border-radius: 50%;
+}
+[id="sWhite"]:checked~#modalSettings label[for="sWhite"],
+[id="sGray-100"]:checked~#modalSettings label[for="sGray-100"],
+[id="sGray-200"]:checked~#modalSettings label[for="sGray-200"],
+[id="sGray-300"]:checked~#modalSettings label[for="sGray-300"],
+[id="sGray-400"]:checked~#modalSettings label[for="sGray-400"],
+[id="sGray-500"]:checked~#modalSettings label[for="sGray-500"],
+[id="sGray-600"]:checked~#modalSettings label[for="sGray-600"],
+[id="sGray-700"]:checked~#modalSettings label[for="sGray-700"],
+[id="sGray-800"]:checked~#modalSettings label[for="sGray-800"],
+[id="sGray-900"]:checked~#modalSettings label[for="sGray-900"] {
+	border: 3px solid var(--ma-panel-color);
+}
+/* Logout */
+.btn-logout {
+	color: var(--ma-theme-border-color);
+}
+.btn-logout:hover {
+	color: var(--ma-theme-border-color);
+	opacity: 0.8;
+}
+/* Theme */
+[id="tLight"]:checked~div {
+	--ma-theme-bg: var(--bs-gray-300);
+	--ma-theme-bg-darker: var(--bs-gray-800);
+	--ma-theme-bg-hover: var(--bs-gray-900);
+	--ma-theme-border-color: var(--bs-gray-700);
+	--ma-theme-color: var(--bs-gray-900);
+	--ma-theme-color-contrast: var(--bs-gray-100);
+}
+[id="tGray"]:checked~div {
+	--ma-theme-bg: var(--bs-gray-400);
+	--ma-theme-bg-darker: var(--bs-gray-800);
+	--ma-theme-bg-hover: var(--bs-gray-900);
+	--ma-theme-border-color: var(--bs-gray-700);
+	--ma-theme-color: var(--bs-gray-900);
+	--ma-theme-color-contrast: var(--bs-gray-100);
+}
+[id="tWhite"]:checked~div {
+	--ma-theme-bg: var(--bs-white);
+	--ma-theme-bg-darker: var(--bs-gray-800);
+	--ma-theme-bg-hover: var(--bs-gray-900);
+	--ma-theme-border-color: var(--bs-gray-700);
+	--ma-theme-color: var(--bs-gray-900);
+	--ma-theme-color-contrast: var(--bs-gray-100);
+}
+[id="tDark"]:checked~div {
+	--ma-theme-bg: var(--bs-gray-700);
+	--ma-theme-bg-darker: var(--bs-gray-800);
+	--ma-theme-bg-hover: var(--bs-gray-900);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tBlue"]:checked~div {
+	--ma-theme-bg: var(--mm-blue-600);
+	--ma-theme-bg-darker: var(--mm-blue-600);
+	--ma-theme-bg-hover: var(--mm-blue-700);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tBlue-700"]:checked~div {
+	--ma-theme-bg: var(--mm-blue-700);
+	--ma-theme-bg-darker: var(--mm-blue-700);
+	--ma-theme-bg-hover: var(--mm-blue-800);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tBlue-800"]:checked~div {
+	--ma-theme-bg: var(--mm-blue-800);
+	--ma-theme-bg-darker: var(--mm-blue-800);
+	--ma-theme-bg-hover: var(--mm-blue-900);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tBlue-900"]:checked~div {
+	--ma-theme-bg: var(--mm-blue-900);
+	--ma-theme-bg-darker: var(--mm-blue-900);
+	--ma-theme-bg-hover: var(--mm-blue-800);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tIndigo"]:checked~div {
+	--ma-theme-bg: var(--bs-indigo);
+	--ma-theme-bg-darker: var(--bs-indigo);
+	--ma-theme-bg-hover: var(--bs-indigo);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tIndigo-600"]:checked~div {
+	--ma-theme-bg: var(--ma-indigo-600);
+	--ma-theme-bg-darker: var(--ma-indigo-600);
+	--ma-theme-bg-hover: var(--ma-indigo-600);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tIndigo-700"]:checked~div {
+	--ma-theme-bg: var(--ma-indigo-700);
+	--ma-theme-bg-darker: var(--ma-indigo-700);
+	--ma-theme-bg-hover: var(--ma-indigo-700);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tIndigo-800"]:checked~div {
+	--ma-theme-bg: var(--ma-indigo-800);
+	--ma-theme-bg-darker: var(--ma-indigo-800);
+	--ma-theme-bg-hover: var(--ma-indigo-800);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tIndigo-900"]:checked~div {
+	--ma-theme-bg: var(--ma-indigo-900);
+	--ma-theme-bg-darker: var(--ma-indigo-900);
+	--ma-theme-bg-hover: var(--ma-indigo-900);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tPurple"]:checked~div {
+	--ma-theme-bg: var(--bs-purple);
+	--ma-theme-bg-darker: var(--bs-purple);
+	--ma-theme-bg-hover: var(--bs-purple);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tPurple-800"]:checked~div {
+	--ma-theme-bg: var(--mm-purple-800);
+	--ma-theme-bg-darker: var(--mm-purple-800);
+	--ma-theme-bg-hover: var(--mm-purple-800);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tPink"]:checked~div {
+	--ma-theme-bg: var(--bs-pink);
+	--ma-theme-bg-darker: var(--bs-pink);
+	--ma-theme-bg-hover: var(--bs-pink);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tPink-800"]:checked~div {
+	--ma-theme-bg: var(--mm-pink-800);
+	--ma-theme-bg-darker: var(--mm-pink-800);
+	--ma-theme-bg-hover: var(--mm-pink-800);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tRed"]:checked~div {
+	--ma-theme-bg: var(--bs-red);
+	--ma-theme-bg-darker: var(--bs-red);
+	--ma-theme-bg-hover: var(--bs-red);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tRed-800"]:checked~div {
+	--ma-theme-bg: var(--mm-red-800);
+	--ma-theme-bg-darker: var(--mm-red-800);
+	--ma-theme-bg-hover: var(--mm-red-800);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tOrange"]:checked~div {
+	--ma-theme-bg: var(--bs-orange);
+	--ma-theme-bg-darker: var(--bs-orange);
+	--ma-theme-bg-hover: var(--bs-orange);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tOrange-800"]:checked~div {
+	--ma-theme-bg: var(--mm-orange-800);
+	--ma-theme-bg-darker: var(--mm-orange-800);
+	--ma-theme-bg-hover: var(--mm-orange-800);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tYellow"]:checked~div {
+	--ma-theme-bg: var(--bs-yellow);
+	--ma-theme-bg-darker: var(--bs-yellow);
+	--ma-theme-bg-hover: var(--bs-yellow);
+	--ma-theme-border-color: var(--ma-theme-bg);
+	--ma-theme-color: var(--bs-gray-900);
+	--ma-theme-color-contrast: var(--bs-gray-100);
+}
+[id="tYellow-800"]:checked~div {
+	--ma-theme-bg: var(--mm-yellow-800);
+	--ma-theme-bg-darker: var(--mm-yellow-800);
+	--ma-theme-bg-hover: var(--mm-yellow-800);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tGreen"]:checked~div {
+	--ma-theme-bg: var(--bs-green);
+	--ma-theme-bg-darker: var(--bs-green);
+	--ma-theme-bg-hover: var(--bs-green);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tGreen-800"]:checked~div {
+	--ma-theme-bg: var(--mm-green-800);
+	--ma-theme-bg-darker: var(--mm-green-800);
+	--ma-theme-bg-hover: var(--mm-green-800);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tTeal"]:checked~div {
+	--ma-theme-bg: var(--bs-teal);
+	--ma-theme-bg-darker: var(--bs-teal);
+	--ma-theme-bg-hover: var(--bs-teal);
+	--ma-theme-border-color: var(--ma-theme-bg);
+	--ma-theme-color: var(--bs-gray-900);
+	--ma-theme-color-contrast: var(--bs-gray-100);
+}
+[id="tTeal-800"]:checked~div {
+	--ma-theme-bg: var(--mm-teal-800);
+	--ma-theme-bg-darker: var(--mm-teal-800);
+	--ma-theme-bg-hover: var(--mm-teal-800);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+[id="tCyan"]:checked~div {
+	--ma-theme-bg: var(--bs-cyan);
+	--ma-theme-bg-darker: var(--bs-cyan);
+	--ma-theme-bg-hover: var(--bs-cyan);
+	--ma-theme-border-color: var(--ma-theme-bg);
+	--ma-theme-color: var(--bs-gray-900);
+	--ma-theme-color-contrast: var(--bs-gray-100);
+}
+[id="tCyan-800"]:checked~div {
+	--ma-theme-bg: var(--mm-cyan-800);
+	--ma-theme-bg-darker: var(--mm-cyan-800);
+	--ma-theme-bg-hover: var(--mm-cyan-800);
+	--ma-theme-border-color: var(--ma-theme-bg);
+}
+/* Sidebar colour */
+[id="sWhite"]:checked~div {
+	--ma-sidebar-bg: var(--bs-white);
+	--ma-sidebar-bg-hover: var(--bs-gray-300);
+ 	--ma-sidebar-color: var(--bs-gray-900);
+	--ma-sidebar-active-bg: var(--bs-gray-300);
+	--ma-sidebar-active-bg-hover: var(--bs-gray-400);
+ 	--ma-sidebar-active-color: var(--bs-gray-900);
+}
+[id="sGray-100"]:checked~div {
+	--ma-sidebar-bg: var(--bs-gray-100);
+	--ma-sidebar-bg-hover: var(--bs-gray-200);
+	--ma-sidebar-active-bg: var(--bs-gray-200);
+	--ma-sidebar-active-bg-hover: var(--bs-gray-300);
+ 	--ma-sidebar-active-color: var(--bs-gray-900);
+ 	--ma-sidebar-color: var(--bs-gray-900);
+}
+[id="sGray-200"]:checked~div {
+	--ma-sidebar-bg: var(--bs-gray-200);
+	--ma-sidebar-bg-hover: var(--bs-gray-300);
+ 	--ma-sidebar-color: var(--bs-gray-900);
+	--ma-sidebar-active-bg: var(--bs-gray-300);
+	--ma-sidebar-active-bg-hover: var(--bs-gray-400);
+ 	--ma-sidebar-active-color: var(--bs-gray-900);
+}
+[id="sGray-300"]:checked~div {
+	--ma-sidebar-bg: var(--bs-gray-300);
+	--ma-sidebar-bg-hover: var(--bs-gray-400);
+ 	--ma-sidebar-color: var(--bs-gray-900);
+	--ma-sidebar-active-bg: var(--bs-gray-400);
+	--ma-sidebar-active-bg-hover: var(--bs-gray-500);
+ 	--ma-sidebar-active-color: var(--bs-gray-900);
+}
+[id="sGray-400"]:checked~div {
+	--ma-sidebar-bg: var(--bs-gray-400);
+	--ma-sidebar-bg-hover: var(--bs-gray-500);
+ 	--ma-sidebar-color: var(--bs-gray-900);
+	--ma-sidebar-active-bg: var(--bs-gray-500);
+	--ma-sidebar-active-bg-hover: var(--bs-gray-600);
+ 	--ma-sidebar-active-color: var(--bs-gray-900);
+}
+[id="sGray-500"]:checked~div {
+	--ma-sidebar-bg: var(--bs-gray-500);
+	--ma-sidebar-bg-hover: var(--bs-gray-600);
+ 	--ma-sidebar-color: var(--bs-gray-900);
+	--ma-sidebar-active-bg: var(--bs-gray-600);
+	--ma-sidebar-active-bg-hover: var(--bs-gray-700);
+ 	--ma-sidebar-active-color: var(--bs-gray-900);
+}
+[id="sGray-600"]:checked~div {
+	--ma-sidebar-bg: var(--bs-gray-600);
+	--ma-sidebar-bg-hover: var(--bs-gray-500);
+ 	--ma-sidebar-color: var(--bs-gray-100);
+	--ma-sidebar-active-bg: var(--bs-gray-700);
+	--ma-sidebar-active-bg-hover: var(--bs-gray-600);
+ 	--ma-sidebar-active-color: var(--bs-gray-100);
+}
+[id="sGray-700"]:checked~div {
+	--ma-sidebar-bg: var(--bs-gray-700);
+	--ma-sidebar-bg-hover: var(--bs-gray-600);
+ 	--ma-sidebar-color: var(--bs-gray-100);
+	--ma-sidebar-active-bg: var(--bs-gray-800);
+	--ma-sidebar-active-bg-hover: var(--bs-gray-700);
+ 	--ma-sidebar-active-color: var(--bs-gray-100);
+}
+[id="sGray-800"]:checked~div {
+	--ma-sidebar-bg: var(--bs-gray-800);
+	--ma-sidebar-bg-hover: var(--bs-gray-700);
+ 	--ma-sidebar-color: var(--bs-gray-100);
+	--ma-sidebar-active-bg: var(--bs-gray-900);
+	--ma-sidebar-active-bg-hover: var(--bs-gray-800);
+ 	--ma-sidebar-active-color: var(--bs-gray-100);
+}
+[id="sGray-900"]:checked~div {
+	--ma-sidebar-bg: var(--bs-gray-900);
+	--ma-sidebar-bg-hover: var(--bs-gray-800);
+ 	--ma-sidebar-color: var(--bs-gray-100);
+	--ma-sidebar-active-bg: var(--bs-gray-800);
+	--ma-sidebar-active-bg-hover: var(--bs-gray-700);
+ 	--ma-sidebar-active-color: var(--bs-gray-100);
+}
+/* Dark theme */
+[id="cDark"]:checked~div {
+	--ma-main-bg: var(--bs-gray-900);
+	--ma-theme-bg: var(--bs-gray-900);
+	--ma-theme-bg-darker: var(--bs-gray-900);
+	--ma-theme-bg-hover: var(--bs-gray-800);
+	--ma-theme-border-color: var(--bs-gray-400);
+	--ma-theme-color: var(--bs-gray-300);
+	--ma-theme-color-contrast: var(--bs-gray-900);
+	--ma-theme-color-gray: var(--bs-gray-400);
+	--ma-input-bg: var(--bs-gray-700);
+	--ma-input-color: var(--bs-gray-400);
+	--ma-panel-bg: var(--bs-gray-800);
+	--ma-panel-color: var(--bs-gray-300);
+	--ma-action-hover-bg: var(--bs-gray-900);
+
+	--ma-sidebar-bg: var(--bs-gray-800);
+	--ma-sidebar-bg-hover: var(--bs-gray-700);
+ 	--ma-sidebar-color: var(--bs-gray-100);
+	--ma-sidebar-active-bg: var(--bs-gray-900);
+	--ma-sidebar-active-bg-hover: var(--bs-gray-800);
+ 	--ma-sidebar-active-color: var(--bs-gray-100);
+
+	--ma-maillist-hover-bg: var(--bs-gray-700);
+}
+#actions .btn-outline-secondary.disabled * {
+	color: var(--bs-gray-600)!important;
+}
+[id="cDark"]:checked~div #actionbar * {
+	color: var(--ma-theme-color)!important;
+}
+
+/* Hide/show sidebar */
+@keyframes slide-right {
+	from {width: 0px;}
+	to {width: 250px;}
+}
+@keyframes slide-left {
+	from {width: 250px; margin-right: 6px;}
+	to {width: 0px; margin-right: 0px;}
+}
+@keyframes move-left {
+	from {left: 0px;}
+	to {left: -250px;}
+}
+@keyframes move-right {
+	from {left: -250px;}
+	to {left: 0px;}
+}
+/* Hide/show menu */
+@keyframes slide-up {
+	from {height: 0px;}
+	to {height: 28px;}
+}
+@keyframes slide-down {
+	from {height: 28px;}
+	to {height: 0px;}
+}
+[id="pMenuDefault"]:checked~div label[for="pMenuVisible"] {
+	display: none;
+}
+[id="pMenuHidden"]:checked~div label[for="pMenuHidden"] {
+	display: none;
+}
+[id="pMenuVisible"]:checked~div label[for="pMenuVisible"] {
+	display: none;
+}
+[id="pMenuDefault"]:checked~div #menu {
+	display: none;
+}
+[id="pMenuHidden"]:checked~div #menu {
+	animation: 0.1s slide-up forwards;
+}
+[id="pMenuVisible"]:checked~div #menu {
+	animation: 0.1s slide-down forwards;
+}
+[id="pHidden"]:checked~div label[for="pHidden"] {
+	display: none;
+}
+[id="pVisible"]:checked~div label[for="pVisible"] {
+	display: none;
+}
+@media screen and (max-width: 1199.98px) {
+	#sidebar {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: -250px;
+		z-index: 1009;
+		width: 250px;
+	}
+	[id="pHidden"]:checked~div #sidebar {
+		animation: 0.2s move-left forwards;
+	}
+	[id="pVisible"]:checked~div #sidebar {
+		animation: 0.2s move-right forwards;
+	}
+	[id="pVisible"]:checked~#main::after {
+		display: block;
+		animation: 0.2s show-backdrop forwards;
+	}
+	[id="pDefault"]:checked~div label[for="pHidden"] {
+		display: none;
+	}
+}
+@media screen and (min-width: 1200px) {
+	#sidebar {
+/*		border: var(--bs-border-width) var(--bs-border-style) rgba(var(--bs-secondary-rgb),0.25);
+		border-left: 0;
+		border-right: 0;*/
+		width: 250px;
+		z-index: 1;
+	}
+	#sidebar label[for="pHidden"] {
+		display: none;
+	}
+	[id="pHidden"]:checked~div #sidebar {
+		animation: 0.2s slide-left forwards;
+	}
+	[id="pVisible"]:checked~div #sidebar {
+		animation: 0.2s slide-right forwards;
+	}
+	[id="pDefault"]:checked~div label[for="pVisible"] {
+		display: none;
+	}
+}
+/* Mail layout (right, bottom or hidden) */
+@media screen and (max-width: 700px) {
+	.mail-list-from,
+	.mail-list-subject {
+		display: block;
+	}
+	.mail-date {
+		position: absolute;
+		right: 0;
+	}
+	#maincontent {
+		display: flex;
+	}
+	#maillist {
+		width: 100%;
+		height: 100%;
+	}
+	#mailpanel {
+		height: 100%;
+	}
+	#mail {
+		display: flex;
+	}
+	#empty-mail {
+		display: none;
+	}
+	[id="mail-new"], [id^="mail-0"] {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		background: var(--ma-panel-bg);
+		z-index: 2;
+		display: none;
+	}
+	[id="content-new"]:checked~#main #mail-new,
+	[id="content-001"]:checked~#main #mail-001,
+	[id="content-002"]:checked~#main #mail-002,
+	[id="content-003"]:checked~#main #mail-003,
+	[id="content-004"]:checked~#main #mail-004,
+	[id="content-005"]:checked~#main #mail-005,
+	[id="content-006"]:checked~#main #mail-006,
+	[id="content-007"]:checked~#main #mail-007,
+	[id="content-008"]:checked~#main #mail-008,
+	[id="content-009"]:checked~#main #mail-009,
+	[id="content-010"]:checked~#main #mail-010,
+	[id="content-017"]:checked~#main #mail-017 {
+		display: flex;
+	}
+}
+@media screen and (min-width: 700px) {
+	[id="lRight"]:checked~#main .mail-list-from,
+	[id="lRight"]:checked~#main .mail-list-subject {
+		display: block;
+	}
+	[id="lBottom"]:checked~#main .mail-list-title,
+	[id="lHidden"]:checked~#main .mail-list-title {
+		overflow: hidden;
+	}
+	[id="lBottom"]:checked~#main .mail-list-from,
+	[id="lBottom"]:checked~#main .mail-list-subject,
+	[id="lHidden"]:checked~#main .mail-list-from,
+	[id="lHidden"]:checked~#main .mail-list-subject {
+		display: inline-block;
+		width: 25%;
+	}
+	[id="lRight"]:checked~#main .mail-list-body {
+		display: inline-block;
+		width: 100%;
+	}
+	[id="lBottom"]:checked~#main .mail-list-body,
+	[id="lHidden"]:checked~#main .mail-list-body {
+		display: inline-block;
+		width: 45%;
+	}
+	[id="lRight"]:checked~#main .mail-date {
+		position: absolute;
+		right: 0;
+	}
+	[id="lBottom"]:checked~#main .mail-date,
+	[id="lHidden"]:checked~#main .mail-date {
+		margin: auto 24px;
+		width: 80px;
+	}
+	/*
+	[id="lRight"]:checked~#modalSettings label[for="lRight"],
+	[id="lBottom"]:checked~#modalSettings label[for="lBottom"],
+	[id="lHidden"]:checked~#modalSettings label[for="lHidden"] {
+		border: 3px solid var(--bs-gray-700);
+	}
+	*/
+	[id="lRight"]:checked~div label[for="lRight"],
+	[id="lBottom"]:checked~div label[for="lBottom"],
+	[id="lHidden"]:checked~div label[for="lHidden"] {
+		border: 3px solid var(--ma-panel-color);
+	}
+
+	[id="lRight"]:checked~#main #mail-panel {
+	}
+	[id="lBottom"]:checked~#main #mail-panel,
+	[id="lHidden"]:checked~#main #mail-panel {
+		flex-direction: column;
+	}
+
+	[id="lRight"]:checked~#main #maincontent {
+		display: flex;
+	}
+	[id="lBottom"]:checked~#main #maincontent,
+	[id="lHidden"]:checked~#main #maincontent {
+		display: block;
+	}
+	[id="lRight"]:checked~#main #maillist {
+		width: 350px;
+		height: 100%;
+/*		margin-right: 6px;*/
+		margin: 0 0.1rem;
+	}
+	[id="lBottom"]:checked~#main #maillist {
+		width: 100%;
+		height: 40%;
+		border-bottom: 1px solid gray;
+		margin-bottom: 6px;
+	}
+	[id="lHidden"]:checked~#main #maillist {
+		width: 100%;
+		height: 100%;
+	}
+	[id="lRight"]:checked~#main #mailpanel {
+		height: 100%;
+	}
+	[id="lBottom"]:checked~#main #mailpanel {
+		height: 60%;
+		background: white !important;
+	}
+	[id="lHidden"]:checked~#main #mailcontent {
+/*		width: 100%;	*/
+	position: absolute;
+		height: 100%;
+		background: var(--ma-main-bg);
+/*		margin-top: calc(10px - 50%);	*/
+	}
+}
+/* Modal tabs */
+[id="tabThemes"]:checked~#modalSettings label[for="tabThemes"],
+[id="tabMail"]:checked~#modalSettings label[for="tabMail"],
+[id="tabMessages"]:checked~#modalSettings label[for="tabMessages"],
+[id="tabSettings"]:checked~#modalSettings label[for="tabSettings"] {
+	color: var(--mm-theme-color-secondary);
+	background-color: transparent;
+	border-bottom: 3px solid var(--ma-theme-border-color);
+	border-radius: 0;
+}
+[id="tabThemes"]:checked~#modalSettings #pills-themes,
+[id="tabMail"]:checked~#modalSettings #pills-mail,
+[id="tabMessages"]:checked~#modalSettings #pills-messages,
+[id="tabSettings"]:checked~#modalSettings #pills-settings {
+	display: block;
+}
+/* Mails */
+[name="mails"]:checked+label {
+	background: var(--mm-sidebar-list-group-checked-bg);
+}
+
+[id="content-001"]:checked~div label[for="content-001"],
+[id="content-002"]:checked~div label[for="content-002"],
+[id="content-003"]:checked~div label[for="content-003"],
+[id="content-004"]:checked~div label[for="content-004"],
+[id="content-005"]:checked~div label[for="content-005"],
+[id="content-006"]:checked~div label[for="content-006"],
+[id="content-007"]:checked~div label[for="content-007"],
+[id="content-008"]:checked~div label[for="content-008"],
+[id="content-009"]:checked~div label[for="content-009"],
+[id="content-010"]:checked~div label[for="content-010"],
+[id="content-011"]:checked~div label[for="content-011"],
+[id="content-012"]:checked~div label[for="content-012"],
+[id="content-013"]:checked~div label[for="content-013"],
+[id="content-014"]:checked~div label[for="content-014"],
+[id="content-015"]:checked~div label[for="content-015"],
+[id="content-016"]:checked~div label[for="content-016"],
+[id="content-017"]:checked~div label[for="content-017"] {
+	background: var(--ma-maillist-hover-bg);
+	--mm-theme-color-tertiary: var(--bs-gray-500);
+
+}
+@media screen and (min-width: 700px) {
+	.mail {
+		display: none;
+	}
+	#empty-mail {
+		display: flex;
+	}
+	[id="content-new"]:checked~#main #mail-new,
+	[id="content-001"]:checked~#main #mail-001,
+	[id="content-002"]:checked~#main #mail-002,
+	[id="content-003"]:checked~#main #mail-003,
+	[id="content-004"]:checked~#main #mail-004,
+	[id="content-005"]:checked~#main #mail-005,
+	[id="content-006"]:checked~#main #mail-006,
+	[id="content-007"]:checked~#main #mail-007,
+	[id="content-008"]:checked~#main #mail-008,
+	[id="content-009"]:checked~#main #mail-009 {
+		display: flex;
+		z-index: 3;
+		background: var(--ma-panel-bg);
+	}
+
+	[id="content-new"]:checked~#main #empty-mail,
+	[id^="content-0"]:checked~#main #empty-mail {
+		display: none;
+	}
+}
+.figure-caption {
+	color: var(--ma-panel-color);
+}
+/* Menu */
+#actionbar div ul {
+	display: none;
+}
+#actionbar {
+	padding-bottom: .1rem;
+}
+[id="menuHome"]:checked~#main label[for="menuHome"],
+[id="menuView"]:checked~#main label[for="menuView"],
+[id="menuMessage"]:checked~#main label[for="menuMessage"],
+[id="menuSettings"]:checked~#main label[for="menuSettings"],
+[id="menuHelp"]:checked~#main label[for="menuHelp"] {
+	color: var(--ma-panel-color);
+	background-color: transparent;
+	border-bottom: 3px solid var(--ma-theme-border-color);
+	border-radius: 0;
+}
+[id="menuHome"]:checked~#main #actions-home,
+[id="menuView"]:checked~#main #actions-view,
+[id="menuMessage"]:checked~#main #actions-message,
+[id="menuSettings"]:checked~#main #actions-settings,
+[id="menuHelp"]:checked~#main #actions-help {
+	display: flex;
+}
+[id="layoutOptions"]:checked~#main #layout-options {
+	display: block;
+}
+[id="themeOptions"]:checked~#main #theme-options {
+	display: block;
+}
+@media screen and (max-width: 700px) {
+	.dropdown-menu-right {
+		left: auto;
+		right: 0;
+	}
+}
+		</style>
+	</head>
+
+	<body class="d-flex flex-column h-100 overflow-hidden">
+
+		<!-- Sidebar panel display checkbox -->
+		<!--input type="checkbox" id="sPanelDisplay" name="panel" value="sPanelDisplay" class="d-none" checked-->
+		<input type="radio" id="pDefault" name="panel" value="pDefault" class="d-none" checked>
+		<input type="radio" id="pHidden" name="panel" value="pHidden" class="d-none">
+		<input type="radio" id="pVisible" name="panel" value="pVisible" class="d-none">
+		<!-- Menu buttons -->
+		<input type="radio" id="pMenuDefault" name="panelmenu" value="pMenuDefault" class="d-none" checked>
+		<input type="radio" id="pMenuHidden" name="panelmenu" value="pMenuHidden" class="d-none">
+		<input type="radio" id="pMenuVisible" name="panelmenu" value="pMenuVisible" class="d-none">
+		<!-- Navbar buttons -->
+		<input type="checkbox" id="nSettings" name="panel" modal="true" value="nSettings" class="d-none">
+		<input type="checkbox" id="nUser" name="panel" modal="true" value="nUser" class="d-none">
+		<input type="checkbox" id="nLogout" name="panel" modal="true" value="nLogout" class="d-none">
+		<!-- Menu tab radio buttons -->
+		<input type="radio" id="menuHome" name="menu" value="menuHome" class="d-none" checked>
+		<input type="radio" id="menuView" name="menu" value="menuView" class="d-none">
+		<input type="radio" id="menuMessage" name="menu" value="menuMessage" class="d-none">
+		<input type="radio" id="menuSettings" name="menu" value="menuSettings" class="d-none">
+		<input type="radio" id="menuHelp" name="menu" value="menuHelp" class="d-none">
+		<!-- Sub menu items -->
+		<input type="checkbox" id="layoutOptions" name="options" value="layoutOptions" class="d-none">
+		<input type="checkbox" id="themeOptions" name="options" value="themeOptions" class="d-none">
+		<!-- Navbar search & user options -->
+		<input type="checkbox" id="searchOptions" name="search" value="searchOptions" class="d-none">
+		<input type="checkbox" id="userOptions" name="search" value="userOptions" class="d-none">
+		<!-- Theme radio buttons -->
+		<input type="radio" id="tLight" name="themes" value="tLight" class="d-none">
+		<input type="radio" id="tGray" name="themes" value="tGray" class="d-none">
+		<input type="radio" id="tWhite" name="themes" value="tWhite" class="d-none">
+		<input type="radio" id="tDark" name="themes" value="tDark" class="d-none">
+		<input type="radio" id="tBlue" name="themes" value="tBlue" class="d-none">
+		<input type="radio" id="tBlue-700" name="themes" value="tBlue-700" class="d-none">
+		<input type="radio" id="tBlue-800" name="themes" value="tBlue-800" class="d-none">
+		<input type="radio" id="tBlue-900" name="themes" value="tBlue-900" class="d-none">
+		<input type="radio" id="tIndigo" name="themes" value="tIndigo" class="d-none">
+		<input type="radio" id="tIndigo-600" name="themes" value="tIndigo-600" class="d-none">
+		<input type="radio" id="tIndigo-700" name="themes" value="tIndigo-700" class="d-none">
+		<input type="radio" id="tIndigo-800" name="themes" value="tIndigo-800" class="d-none">
+		<input type="radio" id="tIndigo-900" name="themes" value="tIndigo-900" class="d-none">
+		<input type="radio" id="tPurple" name="themes" value="tPurple" class="d-none">
+		<input type="radio" id="tPurple-800" name="themes" value="tPurple-800" class="d-none" checked>
+		<input type="radio" id="tPink" name="themes" value="tPink" class="d-none">
+		<input type="radio" id="tPink-800" name="themes" value="tPink-800" class="d-none">
+		<input type="radio" id="tRed" name="themes" value="tRed" class="d-none">
+		<input type="radio" id="tRed-800" name="themes" value="tRed-800" class="d-none">
+		<input type="radio" id="tOrange" name="themes" value="tOrange" class="d-none">
+		<input type="radio" id="tOrange-800" name="themes" value="tOrange-800" class="d-none">
+		<input type="radio" id="tYellow" name="themes" value="tYellow" class="d-none">
+		<input type="radio" id="tYellow-800" name="themes" value="tYellow-800" class="d-none">
+		<input type="radio" id="tGreen" name="themes" value="tGreen" class="d-none">
+		<input type="radio" id="tGreen-800" name="themes" value="tGreen-800" class="d-none">
+		<input type="radio" id="tTeal" name="themes" value="tTeal" class="d-none">
+		<input type="radio" id="tTeal-800" name="themes" value="tTeal-800" class="d-none">
+		<input type="radio" id="tCyan" name="themes" value="tCyan" class="d-none">
+		<input type="radio" id="tCyan-800" name="themes" value="tCyan-800" class="d-none">
+		<!-- Dark Theme checkbox -->
+		<input type="checkbox" id="cDark" name="dark-theme" value="cDark" class="d-none">
+		<!-- Sidebar radio buttons -->
+		<input type="radio" id="sWhite" name="sidebars" value="sWhite" class="d-none" checked>
+		<input type="radio" id="sGray-100" name="sidebars" value="sGray-100" class="d-none">
+		<input type="radio" id="sGray-200" name="sidebars" value="sGray-200" class="d-none">
+		<input type="radio" id="sGray-300" name="sidebars" value="sGray-300" class="d-none">
+		<input type="radio" id="sGray-400" name="sidebars" value="sGray-400" class="d-none">
+		<input type="radio" id="sGray-500" name="sidebars" value="sGray-500" class="d-none">
+		<input type="radio" id="sGray-600" name="sidebars" value="sGray-600" class="d-none">
+		<input type="radio" id="sGray-700" name="sidebars" value="sGray-700" class="d-none">
+		<input type="radio" id="sGray-800" name="sidebars" value="sGray-800" class="d-none">
+		<input type="radio" id="sGray-900" name="sidebars" value="sGray-900" class="d-none">
+		<!-- Mail layout radio buttons -->
+		<input type="radio" id="lRight" name="layout" value="lRight" class="d-none" checked>
+		<input type="radio" id="lBottom" name="layout" value="lBottom" class="d-none">
+		<input type="radio" id="lHidden" name="layout" value="lHidden" class="d-none">
+		<!-- Settings tab radio buttons -->
+		<input type="radio" id="tabThemes" name="tabs" value="tabThemes" class="d-none" checked>
+		<input type="radio" id="tabMail" name="tabs" value="tabMail" class="d-none">
+		<input type="radio" id="tabMessages" name="tabs" value="tabMessages" class="d-none">
+		<input type="radio" id="tabSettings" name="tabs" value="tabSettings" class="d-none">
+		<!-- Mail content radio buttons -->
+		<input type="radio" id="content-empty" name="contents" value="content-empty" class="d-none" checked>
+		<input type="radio" id="content-new" name="contents" value="content-new" class="d-none">
+		<input type="radio" id="content-001" name="contents" value="content-001" class="d-none">
+		<input type="radio" id="content-002" name="contents" value="content-002" class="d-none">
+		<input type="radio" id="content-003" name="contents" value="content-003" class="d-none">
+		<input type="radio" id="content-004" name="contents" value="content-004" class="d-none">
+		<input type="radio" id="content-005" name="contents" value="content-005" class="d-none">
+		<input type="radio" id="content-006" name="contents" value="content-006" class="d-none">
+		<input type="radio" id="content-007" name="contents" value="content-007" class="d-none">
+		<input type="radio" id="content-008" name="contents" value="content-008" class="d-none">
+		<input type="radio" id="content-009" name="contents" value="content-009" class="d-none">
+		<input type="radio" id="content-010" name="contents" value="content-010" class="d-none">
+		<input type="radio" id="content-011" name="contents" value="content-011" class="d-none">
+		<input type="radio" id="content-012" name="contents" value="content-012" class="d-none">
+		<input type="radio" id="content-013" name="contents" value="content-013" class="d-none">
+		<input type="radio" id="content-014" name="contents" value="content-014" class="d-none">
+		<input type="radio" id="content-015" name="contents" value="content-015" class="d-none">
+		<input type="radio" id="content-016" name="contents" value="content-016" class="d-none">
+		<input type="radio" id="content-017" name="contents" value="content-017" class="d-none">
+
+		<!-- Top panel -->
+		<div class="d-flex flex-column w-100 mm-title" id="top-panel">
+
+			<!-- Navbar -->
+			<nav class="navbar px-2 py-1">
+
+				<div class="d-flex">
+
+					<!-- Collapse link, visible on xl screens -->
+					<!--a class="navbar-brand py-0 d-none d-xl-block" data-bs-toggle="collapse" href="#collapse" role="button" aria-controls="collapse">
+						<i class="bi bi-grid"></i>
+					</a-->
+					<!-- Offcanvas link, hidden on xl screens -->
+					<!--a class="navbar-brand py-0 d-block d-xl-none" data-bs-toggle="offcanvas" href="#offcanvas" role="button" aria-controls="offcanvas">
+						<i class="bi bi-grid"></i>
+					</a-->
+					<!-- Offcanvas link, managed by CSS -->
+					<label class="navbar-brand py-0" role="button" for="pHidden">
+						<i class="bi bi-grid"></i>
+					</label>
+					<label class="navbar-brand py-0" role="button" for="pVisible">
+						<i class="bi bi-grid"></i>
+					</label>
+
+					<!-- Title (Mimosa) -->
+					<span class="fs-5 py-0 navbar-text">Mimosa<!--i class="bi bi-stars text-warning"></i-->
+						<svg class="text-warning" xmlns="http://www.w3.org/2000/svg" width="24" height="16" fill="currentColor" class="bi bi-stars" viewBox="0 0 16 16">
+							<path	d="m 7.6378131,0.15203712 a 0.17157027,0.17300105 0 0 1 0.3257463,0 L 8.2695396,1.0784297 c 0.1367823,0.4129704 0.4577842,0.7366498 0.8673391,0.8745722 l 0.9187323,0.3085319 a 0.17157027,0.17300105 0 0 1 0,0.3284628 L 9.1368787,2.8985284 A 1.3709809,1.3824139 0 0 0 8.2695396,3.7731005 L 7.9635594,4.6994932 a 0.17157027,0.17300105 0 0 1 -0.3257463,0 L 7.331833,3.7731005 A 1.3709809,1.3824139 0 0 0 6.4644941,2.8985284 L 5.5457628,2.5899966 a 0.17157027,0.17300105 0 0 1 0,-0.3284628 L 6.4644941,1.9530019 A 1.3709809,1.3824139 0 0 0 7.331833,1.0784297 Z"
+									id="path1183"
+									style="stroke-width:0.793937" />
+							<path	d="m 12.187318,3.7847929 a 0.17157027,0.17300105 0 0 1 0.325747,0 l 0.30598,0.9263927 c 0.136783,0.4129702 0.457785,0.7366497 0.86734,0.8745721 l 0.918732,0.3085318 a 0.17157027,0.17300105 0 0 1 0,0.3284628 l -0.918732,0.3085315 a 1.3709809,1.3824139 0 0 0 -0.86734,0.8745729 l -0.30598,0.9263926 a 0.17157027,0.17300105 0 0 1 -0.325747,0 L 11.881339,7.4058567 A 1.3709809,1.3824139 0 0 0 11.014,6.5312838 L 10.095269,6.2227523 a 0.17157027,0.17300105 0 0 1 0,-0.3284628 L 11.014,5.5857577 a 1.3709809,1.3824139 0 0 0 0.867339,-0.8745721 z"
+									id="path1183-7"
+									style="stroke-width:0.793937" />
+							<path	d="m 7.8859836,11.316603 a 0.17157027,0.17300105 0 0 1 0.3257463,0 l 0.3059806,0.926392 c 0.1367822,0.412971 0.4577841,0.736651 0.8673394,0.874572 l 0.9187321,0.308532 a 0.17157027,0.17300105 0 0 1 0,0.328464 l -0.9187321,0.308532 a 1.3709809,1.3824139 0 0 0 -0.8673394,0.874572 l -0.3059806,0.926392 a 0.17157027,0.17300105 0 0 1 -0.3257463,0 L 7.5800034,14.937667 A 1.3709809,1.3824139 0 0 0 6.7126646,14.063095 L 5.7939333,13.754563 a 0.17157027,0.17300105 0 0 1 0,-0.328464 l 0.9187313,-0.308532 a 1.3709809,1.3824139 0 0 0 0.8673388,-0.874572 z"
+									id="path1183-4"
+									style="stroke-width:0.793937" />
+							<path	d="m 2.7219828,4.1433744 c 0.086972,-0.2630891 0.4554123,-0.2630891 0.5423835,0 L 3.7743332,5.687628 A 2.2849682,2.3040231 0 0 0 5.2204255,7.1449823 L 6.751117,7.6592024 c 0.2609137,0.087701 0.2609137,0.4592106 0,0.5469064 L 5.2196348,8.7203287 A 2.2849682,2.3040231 0 0 0 3.7743332,10.178481 l -0.5099669,1.543455 a 0.28542336,0.28780359 0 0 1 -0.5423835,0 L 2.2120158,10.177684 A 2.2849682,2.3040231 0 0 0 0.76671412,8.7203287 L -0.76476815,8.2061088 a 0.28542336,0.28780359 0 0 1 0,-0.5469064 L 0.76671412,7.1449823 A 2.2849682,2.3040231 0 0 0 2.2120158,5.687628 Z"
+									id="path1093"
+									style="stroke-width:0.793937" />
+							<path	d="m 9.780487,7.2930572 a 0.11464374,0.11559978 0 0 1 0.2166365,0 l 0.2039875,0.6170641 c 0.09093,0.2758447 0.305189,0.491896 0.578753,0.583579 l 0.61196,0.205688 a 0.11464374,0.11559978 0 0 1 0,0.2184432 l -0.61196,0.2056886 A 0.91398728,0.92160928 0 0 0 10.201111,9.7070995 L 9.9971235,10.324163 a 0.11464374,0.11559978 0 0 1 -0.2166365,0 L 9.5765,9.7070995 A 0.91398728,0.92160928 0 0 0 8.997746,9.1235201 L 8.3865769,8.9178315 a 0.11464374,0.11559978 0 0 1 0,-0.2184432 L 8.9985373,8.4937003 C 9.2721005,8.4020163 9.4863663,8.185966 9.5772902,7.9101213 L 9.780487,7.2938549 Z"
+									id="path1777"
+									style="stroke-width:0.793937" />
+						</svg>
+					</span>
+
+				</div>
+
+				<!-- Search box -->
+				<div class="d-flex flex-fill ms-4 me-md-4" style="max-width: 600px;">
+					<!--div class="input-group input-group-sm me-2 d-none d-sm-flex border rounded border-light">
+						<input class="form-control" type="text" placeholder="Search">
+						<i class="bi bi-search input-group-text"></i>
+					</div-->
+					<div class="input-group input-group-sm justify-content-end">
+						<button type="button" class="d-none d-md-block btn btn-outline-search"><i class="bi bi-search"></i></button>
+						<label class="d-none d-md-block btn btn-outline-search dropdown-toggle dropdown-toggle-split border-end-0" role="button" for="searchOptions" style="border-top: var(--bs-btn-border-width) solid var(--ma-input-color); border-bottom: var(--bs-btn-border-width) solid var(--ma-input-color);"></label>
+						<label class="d-block d-md-none btn btn-sm btn-outline-search me-2 border-0 rounded" role="button" for="searchOptions"><i class="bi bi-search"></i></label>
+						<!--button type="button" class="btn btn-outline-navbar dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+							<span class="visually-hidden">Toggle Dropdown</span>
+						</button-->
+						<div class="dropdown-menu panel w-100" id="search-options">
+							<div class="input-group input-group-sm">
+								<div class="row w-100 mx-0 my-1">
+									<div class="col-3 d-flex align-items-center">Search in</div>
+									<div class="col-9">
+										<select class="form-select" aria-label="Default select example">
+											<option selected>All Folders</option>
+											<option value="1">Inbox</option>
+											<option value="2">Outbox</option>
+											<option value="3">Draft</option>
+											<option value="3">Sent</option>
+											<option value="3">Recycle Bin</option>
+											<option value="3">Spam</option>
+											<option value="3">Archives</option>
+										</select>
+									</div>
+								</div>
+								<div class="row w-100 mx-0 my-1">
+									<div class="col-3 d-flex align-items-center">From</div>
+									<div class="col-9"><input type="text" class="form-control" placeholder="Sender"></div>
+								</div>
+								<div class="row w-100 mx-0 my-1">
+									<div class="col-3 d-flex align-items-center">To</div>
+									<div class="col-9"><input type="text" class="form-control" placeholder="Recipient"></div>
+								</div>
+								<div class="row w-100 mx-0 my-1">
+									<div class="col-3 d-flex align-items-center">Subject</div>
+									<div class="col-9"><input type="text" class="form-control" placeholder="Subject"></div>
+								</div>
+								<div class="row w-100 mx-0 my-1">
+									<div class="col-3 d-flex align-items-center">Keywords</div>
+									<div class="col-9"><input type="text" class="form-control" placeholder="Keywords"></div>
+								</div>
+								<div class="row w-100 mx-0 my-1 px-3"><hr class="dropdown-divider"></div>
+								<div class="w-100 mx-0 my-1 px-1">
+									<div class="text-end px-2 d-grid d-md-block gap-2 w-100">
+										<label class="btn btn-sm btn-secondary" role="button" for="searchOptions">Cancel</label>
+										<label class="btn btn-sm btn-warning" role="button" for="searchOptions">Search</label>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<!--div class="form-floating"-->
+							<input type="text" id="searchInput" class="d-none d-md-flex form-control" placeholder="Search here" aria-label="Search here">
+							<!--label for="searchInput">Search here</label-->
+						<!--/div-->
+
+					</div>
+
+				</div>
+
+
+				<!-- Settings, User and Logout buttons on large screens -->
+				<div class="d-none d-sm-block" id="buttons">
+					<label class="btn btn-sm btn-outline-settings me-2 border-0 rounded" role="button" for="cDark"><i class="bi bi-lightbulb-fill"></i></label>
+					<label class="btn btn-sm btn-outline-settings me-2 border-0 rounded" role="button" for="nSettings"><i class="bi bi-gear-fill"></i></label>
+					<label class="btn btn-sm btn-outline-navbar me-2" role="button" for="nUser"><i class="bi bi-person-fill"></i><span class="ms-1">User</span></label>
+					<label class="btn btn-sm btn-warning" role="button" for="nLogout"><i class="bi bi-box-arrow-right me-1"></i>Logout</label>
+				</div>
+
+				<!-- Settings, User and Logout dropdown on small screens -->
+				<div class="dropdown d-block d-sm-none">
+					<div class="input-group input-group-sm">
+						<label class="btn btn-sm btn-outline-settings me-2 border-0 rounded" role="button" for="nSettings"><i class="bi bi-gear-fill"></i></label>
+						<button type="button" class="btn btn-outline-navbar" style="border-top-left-radius: 0.25rem;border-bottom-left-radius: 0.25rem;"><i class="bi bi-person-fill"></i></button>
+						<label class="btn btn-outline-navbar dropdown-toggle dropdown-toggle-split" role="button" for="userOptions"></label>
+					</div>
+
+					<div class="dropdown-menu dropdown-menu-right" id="user-options">
+						<label class="dropdown-item" role="button" for="nUser"><i class="bi bi-person-fill"></i><span class="ms-1">User</span></label>
+						<label class="dropdown-item" role="button" for="nLogout"><i class="bi bi-box-arrow-right"></i><span class="ms-1">Logout</span></label>
+						<!--div><a class="dropdown-item" href="#">User</a></div>
+						<div><a class="dropdown-item" href="javascript:launchModal('modalLogout');">Logout</a></div-->
+					</div>
+				</div>
+
+			</nav>
+
+		</div>
+
+		<!-- Main panel -->
+		<div class="d-flex overflow-hidden" id="main">
+
+			<div class="d-flex flex-column overflow-hidden w-100" id="" style="background: var(--mm-main-bg);">
+
+				<!-- Nav tabs -->
+				<ul class="nav nav-pills px-2" id="menu" role="tablist">
+					<li class="nav-item" role="presentation">
+						<label class="nav-link py-0 px-3" role="button" for="menuHome">Home</label>
+					</li>
+					<li class="nav-item" role="presentation">
+						<label class="nav-link py-0 px-3" role="button" for="menuView">View</label>
+					</li>
+					<li class="nav-item" role="presentation">
+						<label class="nav-link py-0 px-3" role="button" for="menuMessage">Message</label>
+					</li>
+					<!--li class="nav-item" role="presentation">
+						<label class="nav-link py-0 px-3" role="button" for="menuSettings">Settings</label>
+					</li-->
+					<li class="nav-item" role="presentation">
+						<label class="nav-link py-0 px-3" role="button" for="menuHelp">Help</label>
+					</li>
+				</ul>
+
+				<!--div class="tab-pane" id="pills-messages" role="tabpanel" aria-labelledby="pills-messages" tabindex="0">Messages...</div-->
+				<!-- Action bar -->
+				<div id="actionbar" class="pb-1 z-3">
+					<div class="d-flex panel w-100 px-1 container-fluid justify-content-start">
+						<ul class="list-group list-group-horizontal list-group-flush w-100 flex-wrap actions" id="actions-home">
+							<!-- Create button -->
+							<li class="list-group-item px-2 py-1 d-flex align-items-center border border-0">
+								<label class="" role="button" for="pMenuHidden">
+									<i class="bi bi-three-dots-vertical"></i>
+									<!--i class="bi bi-grid-3x3-gap text-secondary"></i-->
+								</label>
+								<label class="" role="button" for="pMenuVisible">
+									<i class="bi bi-three-dots-vertical"></i>
+								</label>
+							</li>
+
+							<!--li class="list-group-item px-2 py-1 d-flex align-items-center border border-0">
+								<i class="bi bi-list"></i>
+							</li-->
+							<li class="list-group-item px-0 py-1 d-flex align-items-center border border-0">
+								<label class="btn btn-sm btn-create d-flex align-items-center h-100 my-1" role="button" for="content-new">
+									<!--a class="btn btn-sm btn-create d-flex align-items-center h-100 my-1" href="#applications"-->
+										<i class="bi bi-pencil-fill fs-5 me-1"></i>
+										<span>Create</span>
+									<!--/a-->
+								</label>
+							</li>
+							<!-- Divider -->
+							<li class="vr mx-2 my-1"></li>
+							<!-- View, Delete, Archive and Move buttons -->
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-display text-primary fs-5 me-1"></i>
+									<span>View</span>
+								</a>
+							</li>
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-trash3 fs-5 me-1"></i>
+									<span>Delete</span>
+								</a>
+							</li>
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-archive fs-5 me-1"></i>
+									<span>Archive</span>
+								</a>
+							</li>
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="javascript:launchModal('exampleModalFullscreen');">
+									<i class="bi bi-folder text-warning fs-5 me-1"></i>
+									<span>Move</span>
+								</a>
+							</li>
+							<!-- Divider -->
+							<li class="vr mx-2 my-1"></li>
+							<!-- Reply, Reply All and Forward buttons -->
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="javascript:launchModal('exampleModalCenteredScrollable');">
+									<i class="bi bi-chevron-left text-primary fs-5 me-1"></i>
+									<span>Reply</span>
+								</a>
+							</li>
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-chevron-double-left text-primary fs-5 me-1"></i>
+									<span>Reply All</span>
+								</a>
+							</li>
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-chevron-right text-primary fs-5 me-1"></i>
+									<span>Forward</span>
+								</a>
+							</li>
+							<!-- Divider -->
+							<li class="vr mx-2 my-1"></li>
+							<!-- Other buttons -->
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-cloud-download text-primary fs-5 me-1"></i>
+									<span>Download</span>
+								</a>
+							</li>
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-check-lg text-primary fs-5 me-1"></i>
+									<span>Read/Unread</span>
+								</a>
+							</li>
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-info-circle text-primary fs-5 me-1"></i>
+									<span>Properties</span>
+								</a>
+							</li>
+						</ul>
+
+						<ul class="list-group list-group-horizontal list-group-flush w-100 flex-wrap actions" id="actions-view">
+							<!-- Settings button -->
+							<li class="px-0 py-0 d-flex align-items-center border border-0">
+								<label class="btn btn-sm btn-outline-secondary text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" role="button" for="nSettings">
+									<i class="bi bi-gear fs-5 me-1"></i>
+									<span>Settings</span>
+								</label>
+							</li>
+							<li class="px-0 py-0 d-flex align-items-center border border-0">
+								<!--label class="btn btn-outline-navbar dropdown-toggle dropdown-toggle-split" role="button" for="userOptions"></label-->
+								<div class="dropdown">
+									<label class="btn btn-sm btn-outline-secondary text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" role="button" for="layoutOptions">
+										<i class="bi bi-layout-sidebar fs-5 me-1"></i>
+										<span>Layout</span>
+										<i class="bi bi-caret-down-fill mx-1"></i>
+									</label>
+									<div class="dropdown-menu dropdown-menu-end panel border border-2" id="layout-options">
+										<!--label class="dropdown-item" role="button" for="nUser"><i class="bi bi-person-fill"></i><span class="ms-1">User</span></label>
+										<label class="dropdown-item" role="button" for="nLogout"><i class="bi bi-box-arrow-right"></i><span class="ms-1">Logout</span></label-->
+										<div class="d-flex flex-wrap px-4">
+											<label class="layout" role="button" for="lRight">
+												<div class="d-flex justify-content-center p-1 border text-nowrap" style="">
+													<i class="bi bi-layout-sidebar fs-1 me-2"></i>
+													<span class="my-auto">Right</span>
+												</div>
+											</label>
+											<label class="layout" role="button" for="lBottom">
+												<div class="d-flex justify-content-center p-1 border text-nowrap" style="">
+													<i class="bi bi-layout-split fs-1 me-2" style="transform: rotate(90deg);"></i>
+													<span class="my-auto">Bottom</span>
+												</div>
+											</label>
+											<label class="layout" role="button" for="lHidden">
+												<div class="d-flex justify-content-center p-1 border text-nowrap" style="">
+													<i class="bi bi-square fs-1 me-2"></i>
+													<span class="my-auto">Hidden</span>
+												</div>
+											</label>
+										</div>
+
+									</div>
+								</div>
+							</li>
+							<li class="px-0 py-0 d-flex align-items-center border border-0">
+								<!--label class="btn btn-outline-navbar dropdown-toggle dropdown-toggle-split" role="button" for="userOptions"></label-->
+								<div class="dropdown">
+									<label class="btn btn-sm btn-outline-secondary text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" role="button" for="themeOptions">
+										<i class="bi bi-droplet fs-5 me-1"></i>
+										<span>Theme</span>
+										<i class="bi bi-caret-down-fill mx-1"></i>
+									</label>
+									<div class="dropdown-menu dropdown-menu-right panel border border-2" id="theme-options">
+										<!--label class="dropdown-item" role="button" for="nUser"><i class="bi bi-person-fill"></i><span class="ms-1">User</span></label>
+										<label class="dropdown-item" role="button" for="nLogout"><i class="bi bi-box-arrow-right"></i><span class="ms-1">Logout</span></label-->
+										<div class="d-flex flex-wrap px-1 justify-content-center" id="colours" style="min-width: 250px;">
+											<label class="theme" role="button" for="tLight">
+												<div class="p-2 border text-nowrap" style="background-color: var(--bs-gray-200);">
+													<i class="bi bi-droplet me-2" style="color: var(--bs-dark)!important;"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tDark">
+												<div class="p-2 border text-nowrap" style="background-color: var(--bs-gray-dark); color: var(--bs-gray-200);">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tBlue">
+												<div class="p-2 border text-nowrap" style="background-color: var(--mm-blue-600); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tBlue-700">
+												<div class="p-2 border text-nowrap" style="background-color: var(--mm-blue-700); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tBlue-800">
+												<div class="p-2 border text-nowrap" style="background-color: var(--mm-blue-800); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tBlue-900">
+												<div class="p-2 border text-nowrap" style="background-color: var(--mm-blue-900); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tIndigo">
+												<div class="p-2 border text-nowrap" style="background-color: var(--bs-indigo); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tIndigo-600">
+												<div class="p-2 border text-nowrap" style="background-color: var(--ma-indigo-600); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tIndigo-700">
+												<div class="p-2 border text-nowrap" style="background-color: var(--ma-indigo-700); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tIndigo-800">
+												<div class="p-2 border text-nowrap" style="background-color: var(--ma-indigo-800); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tIndigo-900">
+												<div class="p-2 border text-nowrap" style="background-color: var(--ma-indigo-900); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tPurple">
+												<div class="p-2 border text-nowrap" style="background-color: var(--bs-purple); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tPurple-800">
+												<div class="p-2 border text-nowrap" style="background-color: var(--mm-purple-800); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tPink">
+												<div class="p-2 border text-nowrap" style="background-color: var(--bs-pink); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tPink-800">
+												<div class="p-2 border text-nowrap" style="background-color: var(--mm-pink-800); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tRed">
+												<div class="p-2 border text-nowrap" style="background-color: var(--bs-red); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tRed-800">
+												<div class="p-2 border text-nowrap" style="background-color: var(--mm-red-800); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tOrange">
+												<div class="p-2 border text-nowrap" style="background-color: var(--bs-orange); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tOrange-800">
+												<div class="p-2 border text-nowrap" style="background-color: var(--mm-orange-800); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tYellow-800">
+												<div class="p-2 border text-nowrap" style="background-color: var(--mm-yellow-800); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tGreen">
+												<div class="p-2 border text-nowrap" style="background-color: #146c43; color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tGreen-800">
+												<div class="p-2 border text-nowrap" style="background-color: var(--mm-green-800); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tTeal">
+												<div class="p-2 border text-nowrap" style="background-color: var(--bs-teal); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tTeal-800">
+												<div class="p-2 border text-nowrap" style="background-color: var(--mm-teal-800); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+											<label class="theme" role="button" for="tCyan-800">
+												<div class="p-2 border text-nowrap" style="background-color: var(--mm-cyan-800); color: white;">
+													<i class="bi bi-droplet me-2"></i>
+												</div>
+											</label>
+										</div>
+
+									</div>
+								</div>
+							</li>
+							<!--li class="px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-droplet fs-5 me-1"></i>
+									<span>Theme</span>
+								</a>
+							</li-->
+
+							<!-- Settings, User and Logout dropdown on small screens -->
+							<!--div class="dropdown d-block" style="background-color: blue;">
+								<div class="input-group input-group-sm">
+									<label class="btn btn-sm btn-outline-settings me-2 border-0 rounded" role="button" for="nSettings"><i class="bi bi-gear-fill"></i></label>
+									<button type="button" class="btn btn-outline-navbar" style="border-top-left-radius: 0.25rem;border-bottom-left-radius: 0.25rem;"><i class="bi bi-person-fill"></i></button>
+									<label class="btn btn-outline-navbar dropdown-toggle dropdown-toggle-split" role="button" for="layout2Options"></label>
+								</div>
+
+								<div class="dropdown-menu dropdown-menu-end dropdown-menu-dark" id="layout2-options">
+									<label class="dropdown-item" role="button" for="nUser"><i class="bi bi-person-fill"></i><span class="ms-1">User</span></label>
+									<label class="dropdown-item" role="button" for="nLogout"><i class="bi bi-box-arrow-right"></i><span class="ms-1">Logout</span></label>
+								</div>
+							</div-->
+
+						</ul>
+
+						<ul class="list-group list-group-horizontal list-group-flush w-100 flex-nowrap actions" id="actions-message">
+							<!-- Create button -->
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-arrow-90deg-left fs-5 me-1"></i>
+									<span>Undo</span>
+								</a>
+							</li>
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-arrow-90deg-right fs-5 me-1"></i>
+									<span>Redo</span>
+								</a>
+							</li>
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-clipboard fs-5 me-1"></i>
+									<span>Clipboard</span>
+								</a>
+							</li>
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<span class="fs-5 fw-bold">B</span>
+								</a>
+							</li>
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<span class="fs-5 fst-italic">I</span>
+								</a>
+							</li>
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<span class="fs-5 text-decoration-underline">U</span>
+								</a>
+							</li>
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<span class="fs-5 text-decoration-line-through">S</span>
+								</a>
+							</li>
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-pen fs-6 me-1 border-bottom border-warning border-5"></i>
+								</a>
+							</li>
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-fonts fs-6 me-1 border-bottom border-danger border-5"></i>
+								</a>
+							</li>
+							<!--li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<span class="fs-5 border-bottom border-danger border-5">A</span>
+								</a>
+							</li-->
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-list-task fs-4 me-1"></i>
+								</a>
+							</li>
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-list-ol fs-4 me-1"></i>
+								</a>
+							</li>
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-text-indent-left fs-4 me-1"></i>
+								</a>
+							</li>
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-text-indent-right fs-4 me-1"></i>
+								</a>
+							</li>
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-justify fs-4 me-1"></i>
+								</a>
+							</li>
+						</ul>
+
+						<!--ul class="list-group list-group-horizontal list-group-flush w-100 text-nowrap overflow-hidden" id="actions-settings" style="height: 38px;"-->
+							<!-- Create button -->
+							<!--li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-info-circle text-primary fs-5 me-1"></i>
+									<span>Settings</span>
+								</a>
+							</li-->
+						<!--/ul-->
+
+						<ul class="list-group list-group-horizontal list-group-flush w-100 flex-nowrap actions" id="actions-help">
+							<!-- Help button -->
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-question-circle text-primary fs-5 me-1"></i>
+									<span>Help</span>
+								</a>
+							</li>
+							<!-- About button -->
+							<!--li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-exclamation-square text-primary fs-5 me-1"></i>
+									<span>About Mimosa</span>
+								</a>
+							</li-->
+							<li class="list-group-item px-0 py-0 d-flex align-items-center border border-0">
+								<a class="btn btn-sm btn-outline-secondary disabled text-dark d-flex align-items-center w-100 h-100 my-1 border-0 rounded-0" href="#">
+									<i class="bi bi-star text-primary fs-5 me-1"></i>
+									<span>About Mimosa</span>
+								</a>
+							</li>
+						</ul>
+
+						<!-- Action dropdown -->
+						<div class="dropdown d-none">
+							<a class="btn btn-lg btn-light dropdown-toggle dropdown-toggle-split py-0 d-flex align-items-center rounded-0" id="moreactions" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<i class="bi bi-three-dots-vertical"></i>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-end p-0" id="menumoreactions" aria-labelledby="dropdownMenuButtonSM">
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<!-- Content panel -->
+				<div class="d-flex flex-column flex-grow-1 h-100 overflow-hidden" id="content">
+
+					<!-- Content panel -->
+					<div class="d-flex w-100" id="maincontent" style="overflow: hidden; position: relative;">
+
+						<!--div class=""-->
+							<!-- Left panel -->
+							<div class="d-flex h-100" id="sidebar">
+
+								<!-- Application Group List -->
+								<div class="list-group list-group-flush justify-content-top small" style="" id="appGroupList">
+									<div class="" style="width: 40px;">
+										<a class="d-flex list-group-item list-group-item-action fs-5 p-0" href="#" style="">
+											<i class="bi bi-folder m-auto"></i>
+										</a>
+										<a class="d-flex list-group-item list-group-item-action fs-5 p-0 active" href="#">
+											<i class="bi bi-envelope m-auto"></i>
+										</a>
+										<a class="d-flex list-group-item list-group-item-action fs-5 p-0" href="#" style="">
+											<i class="bi bi-calendar3 m-auto"></i>
+										</a>
+										<a class="d-flex list-group-item list-group-item-action fs-5 p-0" href="#" style="">
+											<i class="bi bi-people m-auto"></i>
+										</a>
+										<a class="d-flex list-group-item list-group-item-action fs-5 p-0" href="#" style="">
+											<i class="bi bi-database-gear m-auto"></i>
+										</a>
+									</div>
+								</div>
+
+								<!-- Application List (Mail) -->
+								<div class="" id="appList">
+									<div class="d-flex flex-column h-100" style="width: 209px;">
+										<div class="d-block d-xl-none mx-2 py-1 mb-4 fs-5" style="border-bottom: 1px solid var(--mm-sidebar-color);">
+											<i class="bi bi-envelope me-3"></i><span class="">Mail</span>
+											<label class="float-end d-block d-xl-none" role="button" for="pHidden">
+												<i class="bi bi-x-lg fs-5"></i>
+											</label>
+										</div>
+
+										<div class="list-group list-group-flush justify-content-top fs-6 w-100" style="overflow-y: auto;">
+											<a class="list-group-item list-group-item-action active" href="#">
+												<i class="bi bi-inbox me-2"></i><span>Inbox</span>
+											</a>
+											<a class="list-group-item list-group-item-action" href="#">
+												<i class="bi bi-envelope-exclamation me-2"></i><span>Outbox</span>
+											</a>
+											<a class="list-group-item list-group-item-action" href="#">
+												<i class="bi bi-envelope-paper me-2"></i><span>Drafts</span>
+											</a>
+											<a class="list-group-item list-group-item-action" href="#">
+												<i class="bi bi-envelope-check me-2"></i><span>Sent</span>
+											</a>
+											<a class="list-group-item list-group-item-action" href="#">
+												<i class="bi bi-trash3 me-2"></i><span>Recycle Bin</span>
+											</a>
+											<a class="list-group-item list-group-item-action" href="#">
+												<i class="bi bi-envelope-slash me-2"></i><span>Spam</span>
+											</a>
+											<a class="list-group-item list-group-item-action" href="#">
+												<i class="bi bi-archive me-2"></i><span>Archives</span>
+											</a>
+											<label class="list-group-item list-group-item-action" for="lRight"><i class="bi bi-folder me-2"></i>Light</label>
+											<label class="list-group-item list-group-item-action" for="lBottom"><i class="bi bi-folder me-2"></i>Gray</label>
+											<label class="list-group-item list-group-item-action" for="lHidden"><i class="bi bi-folder me-2"></i>White</label>
+											<label class="list-group-item list-group-item-action" for="cDark"><i class="bi bi-folder me-2"></i>Dark</label>
+											<label class="list-group-item list-group-item-action" for="blue"><i class="bi bi-folder me-2"></i>Blue</label>
+											<label class="list-group-item list-group-item-action" for="indigo"><i class="bi bi-folder me-2"></i>Indigo</label>
+											<label class="list-group-item list-group-item-action" for="purple"><i class="bi bi-folder me-2"></i>Purple</label>
+											<label class="list-group-item list-group-item-action" for="pink"><i class="bi bi-tag me-2"></i>Pink</label>
+											<label class="list-group-item list-group-item-action" for="red"><i class="bi bi-tag me-2"></i>Red</label>
+											<label class="list-group-item list-group-item-action" for="orange"><i class="bi bi-tag me-2"></i>Orange</label>
+											<label class="list-group-item list-group-item-action" for="yellow"><i class="bi bi-tag me-2"></i>Yellow</label>
+											<label class="list-group-item list-group-item-action" for="green"><i class="bi bi-tag me-2"></i>Green</label>
+											<label class="list-group-item list-group-item-action" for="teal"><i class="bi bi-tag me-2"></i>Teal</label>
+											<label class="list-group-item list-group-item-action" for="cyan"><i class="bi bi-tag me-2"></i>Cyan</label>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="d-flex flex-fill z-2 overflow-hidden" id="mail-panel" style="background: var(--ma-main-bg);">
+
+								<!-- Mail left panel -->
+								<div class="d-flex flex-column panel z-2" style="" id="maillist">
+								
+								
+									<!-- Mail pagination -->
+									<!--object name="pagination" type="text/html" data="mail_pagination.html"></object-->
+									<!--embed type="text/html" src="mail_pagination.html" width="500" height="200"-->
+									<!--div class="border-bottom border-secondary border-opacity-50 small" id="pagination">
+										<ul class="pagination pagination-lg justify-content-between mb-1 flex-wrap">
+											<li class="page-item disabled"><a class="page-link px-2 py-1" href="#" aria-label="First"><i class="bi bi-chevron-double-left"></i></a></li>
+											<li class="page-item disabled"><a class="page-link px-2 py-1" href="#" aria-label="Previous"><i class="bi bi-chevron-left"></i></a></li>
+											<li class="page-item disabled flex-fill text-center">
+												<div class="">
+													<div class="d-block fs-5">1 / 1</div>
+													<div class="small">9 objects found</div>
+												</div>
+												
+											</li>
+											<li class="page-item"><a class="page-link px-2 py-1" href="#" aria-label="Next"><i class="bi bi-chevron-right"></i></a></li>
+											<li class="page-item"><a class="page-link px-2 py-1" href="#" aria-label="Last"><i class="bi bi-chevron-double-right"></i></a></li>
+										</ul>
+									</div-->
+
+									<!-- Mail list -->
+									<div class="list-group list-group-flush flex-grow-1 w-100" style="overflow-y: scroll;">
+										<div class="">
+											<input type="radio" id="mail-001" name="mails" value="mail-001" class="d-none">
+											<label class="d-flex w-100 list-group-item list-group-item-action p-0 border-start-0 border-secondary border-opacity-50 unread" role="button" for="content-001">
+												<div class="flex-shrink-0 unread-item" id="" style="width: 4px;"></div>
+												<div class="d-flex flex-column justify-content-center">
+													<div style="width: 32px; height: 32px;" class="mail-icon d-flex flex-column justify-content-center rounded-circle text-center text-white m-1 me-2">DT</div>
+												</div>
+												<div class="d-inline-block my-auto flex-grow-1 text-truncate" id="mail-list-title" style="">
+													<span class="mail-list-from" id="" style="">Dell Technology</span>
+													<span class="small mail-list-subject" id="" style="">Take Your Career to the Next Level</span>
+													<span class="small mail-list-body" id="" style="">Join us for Dell Technologies World in Las Vegas. As a partner, you’ll have exclusive access to the Global Partner Summit general session, the Partner Lounge and a curated Partner Journey of activities</span>
+												</div>
+												<div class="flex-shrink-0 small text-end mail-date" id="" style="padding: 0 4px;">2 days ago</div>
+											</label>
+											<label class="d-flex w-100 list-group-item list-group-item-action p-0 border-start-0 border-secondary border-opacity-50" role="button" for="content-002">
+												<div class="flex-shrink-0 unread-item" id="" style="width: 4px;"></div>
+												<div class="d-flex flex-column justify-content-center">
+													<div style="width: 32px; height: 32px;" class="mail-icon d-flex flex-column justify-content-center text-white rounded-circle text-center m-1 me-2">B</div>
+												</div>
+												<div class="d-inline-block my-auto flex-grow-1 text-truncate" id="mail-list-title" style="">
+													<span class="mail-list-from" id="" style="">BUPA</span>
+													<span class="small mail-list-subject" id="" style="">Hop into Easter savings with Life Rewards</span>
+													<span class="small mail-list-body" id="" style="">Whether it's a road trip with friends, a big family roast dinner, or simply bingeing on chocolates at the movies, enjoy the sweeter things in life this Easter with exclusive savings from Life Rewards.</span>
+												</div>
+												<div class="flex-shrink-0 small text-end mail-date" id="" style="padding: 0 4px;">2 days ago</div>
+											</label>
+											<label class="d-flex w-100 list-group-item list-group-item-action p-0 border-start-0 border-secondary border-opacity-50" role="button" for="content-003">
+												<div class="flex-shrink-0 unread-item" id="" style="width: 4px;"></div>
+												<div class="d-flex flex-column justify-content-center">
+													<div style="width: 32px; height: 32px;" class="mail-icon d-flex flex-column justify-content-center text-white rounded-circle text-center m-1 me-2">OW</div>
+												</div>
+												<div class="d-inline-block my-auto flex-grow-1 text-truncate" id="mail-list-title" style="">
+													<span class="mail-list-from" id="" style="">Officeworks</span>
+													<span class="small mail-list-subject" id="" style="">Explore our smart home catalogue</span>
+													<span class="small mail-list-body" id="" style="">From security to smart lights and smart speakers, explore our wide range</span>
+												</div>
+												<div class="flex-shrink-0 small text-end mail-date" id="" style="padding: 0 4px;">23 Mar</div>
+											</label>
+											<label class="d-flex w-100 list-group-item list-group-item-action p-0 border-start-0 border-secondary border-opacity-50" role="button" for="content-004">
+												<div class="flex-shrink-0 unread-item" id="" style="width: 4px;"></div>
+												<div class="d-flex flex-column justify-content-center">
+													<div style="width: 32px; height: 32px;" class="mail-icon d-flex flex-column justify-content-center text-white rounded-circle text-center m-1 me-2">SF</div>
+												</div>
+												<div class="d-inline-block my-auto flex-grow-1 text-truncate" id="mail-list-title" style="">
+													<span class="mail-list-from" id="" style="">Spirit of France</span>
+													<span class="small mail-list-subject" id="" style="">Absinthe: A Classic French Tradition</span>
+													<span class="small mail-list-body" id="" style="">Cognac - Armagnac - Calvados - Whisky - Cider - Wine</span>
+												</div>
+												<div class="flex-shrink-0 small text-end mail-date" id="" style="padding: 0 4px;">11 Mar</div>
+											</label>
+											<label class="d-flex w-100 list-group-item list-group-item-action p-0 border-start-0 border-secondary border-opacity-50" role="button" for="content-005">
+												<div class="flex-shrink-0 unread-item" id="" style="width: 4px;"></div>
+												<div class="d-flex flex-column justify-content-center">
+													<div style="width: 32px; height: 32px;" class="mail-icon d-flex flex-column justify-content-center text-white rounded-circle text-center m-1 me-2">GR</div>
+												</div>
+												<div class="d-inline-block my-auto flex-grow-1 text-truncate" id="mail-list-title" style="">
+													<span class="mail-list-from" id="" style="">Grill'd Relish</span>
+													<span class="small mail-list-subject" id="" style="">How was your experience?</span>
+													<span class="small mail-list-body" id="" style="">We want to hear it all; the good, the bad and the outstanding. Win free chips when you answer something we would like to hear!</span>
+												</div>
+												<div class="flex-shrink-0 small text-end mail-date" id="" style="padding: 0 4px;">10 Mar</div>
+											</label>
+											<label class="d-flex w-100 list-group-item list-group-item-action p-0 border-start-0 border-secondary border-opacity-50" role="button" for="content-006">
+												<div class="flex-shrink-0 unread-item" id="" style="width: 4px;"></div>
+												<div class="d-flex flex-column justify-content-center">
+													<div style="width: 32px; height: 32px;" class="mail-icon d-flex flex-column justify-content-center text-white rounded-circle text-center m-1 me-2">GR</div>
+												</div>
+												<div class="d-inline-block my-auto flex-grow-1 text-truncate" id="mail-list-title" style="">
+													<span class="mail-list-from" id="" style="">Grill'd Relish</span>
+													<span class="small mail-list-subject" id="" style="">Free drink inside!</span>
+													<span class="small mail-list-body" id="" style="">Keep or give... View Online Menu : Find more by visiting our website!</span>
+												</div>
+												<div class="flex-shrink-0 small text-end mail-date" id="" style="padding: 0 4px;">10 Mar</div>
+											</label>
+											<label class="d-flex w-100 list-group-item list-group-item-action p-0 border-start-0 border-secondary border-opacity-50" role="button" for="content-007">
+												<div class="flex-shrink-0 unread-item" id="" style="width: 4px;"></div>
+												<div class="d-flex flex-column justify-content-center">
+													<div style="width: 32px; height: 32px;" class="mail-icon d-flex flex-column justify-content-center text-white rounded-circle text-center m-1 me-2">SM</div>
+												</div>
+												<div class="d-inline-block my-auto flex-grow-1 text-truncate" id="mail-list-title" style="">
+													<span class="mail-list-from" id="" style="">SoftMaker</span>
+													<span class="small mail-list-subject" id="" style="">Service packs and automatic PDF translations</span>
+													<span class="small mail-list-body" id="" style="">What's new at SoftMaker? Destination unknown.</span>
+												</div>
+												<div class="flex-shrink-0 small text-end mail-date" id="" style="padding: 0 4px;">09 Mar</div>
+											</label>
+											<label class="d-flex w-100 list-group-item list-group-item-action p-0 border-start-0 border-secondary border-opacity-50" role="button" for="content-008">
+												<div class="flex-shrink-0 unread-item" id="" style="width: 4px;"></div>
+												<div class="d-flex flex-column justify-content-center">
+													<div style="width: 32px; height: 32px;" class="mail-icon d-flex flex-column justify-content-center text-white rounded-circle text-center m-1 me-2">DT</div>
+												</div>
+												<div class="d-inline-block my-auto flex-grow-1 text-truncate" id="mail-list-title" style="">
+													<span class="mail-list-from" id="" style="">Bunnings</span>
+													<span class="small mail-list-subject" id="" style="">Our NEW pets range is now available</span>
+													<span class="small mail-list-body" id="" style="">From food to accessories, our new pets range is available.</span>
+												</div>
+												<div class="flex-shrink-0 small text-end mail-date" id="" style="padding: 0 4px;">06 Mar</div>
+											</label>
+											<label class="d-flex w-100 list-group-item list-group-item-action p-0 border-start-0 border-secondary border-opacity-50" role="button" for="content-009">
+												<div class="flex-shrink-0 unread-item" id="" style="width: 4px;"></div>
+												<div class="d-flex flex-column justify-content-center">
+													<div style="width: 32px; height: 32px;" class="mail-icon d-flex flex-column justify-content-center text-white rounded-circle text-center m-1 me-2">DT</div>
+												</div>
+												<div class="d-inline-block my-auto flex-grow-1 text-truncate" id="mail-list-title" style="">
+													<span class="mail-list-from" id="" style="">Kmart</span>
+													<span class="small mail-list-subject" id="" style="">Mate, our Easter catalogie has arrived!</span>
+													<span class="small mail-list-body" id="" style="">Our new Easter catalogue is bursting with ideas to help you prepare, decorate and celebrate together this Easter.</span>
+												</div>
+												<div class="flex-shrink-0 small text-end mail-date" id="" style="padding: 0 4px;">26 Dec</div>
+											</label>
+											<label class="d-flex w-100 list-group-item list-group-item-action p-0 border-start-0 border-secondary border-opacity-50" role="button" for="content-010">
+												<div class="flex-shrink-0 unread-item" id="" style="width: 4px;"></div>
+												<div class="d-flex flex-column justify-content-center">
+													<div style="width: 32px; height: 32px;" class="mail-icon d-flex flex-column justify-content-center text-white rounded-circle text-center m-1 me-2">DT</div>
+												</div>
+												<div class="d-inline-block my-auto flex-grow-1 text-truncate" id="mail-list-title" style="">
+													<span class="mail-list-from" id="" style="">Dell Technology</span>
+													<span class="small mail-list-subject" id="" style="">Take Your Career to the Next Level</span>
+													<span class="small mail-list-body" id="" style="">Join us for Dell Technologies World in Las Vegas. As a partner, you’ll have exclusive access to the Global Partner Summit general session, the Partner Lounge and a curated Partner Journey of activities</span>
+												</div>
+												<div class="flex-shrink-0 small text-end mail-date" id="" style="padding: 0 4px;">2 days ago</div>
+											</label>
+											<label class="d-flex w-100 list-group-item list-group-item-action p-0 border-start-0 border-secondary border-opacity-50" role="button" for="content-011">
+												<div class="flex-shrink-0 unread-item" id="" style="width: 4px;"></div>
+												<div class="d-flex flex-column justify-content-center">
+													<div style="width: 32px; height: 32px;" class="mail-icon d-flex flex-column justify-content-center text-white rounded-circle text-center m-1 me-2">DT</div>
+												</div>
+												<div class="d-inline-block my-auto flex-grow-1 text-truncate" id="mail-list-title" style="">
+													<span class="mail-list-from" id="" style="">Dell Technology</span>
+													<span class="small mail-list-subject" id="" style="">Take Your Career to the Next Level</span>
+													<span class="small mail-list-body" id="" style="">Join us for Dell Technologies World in Las Vegas. As a partner, you’ll have exclusive access to the Global Partner Summit general session, the Partner Lounge and a curated Partner Journey of activities</span>
+												</div>
+												<div class="flex-shrink-0 small text-end mail-date" id="" style="padding: 0 4px;">2 days ago</div>
+											</label>
+											<label class="d-flex w-100 list-group-item list-group-item-action p-0 border-start-0 border-secondary border-opacity-50" role="button" for="content-012">
+												<div class="flex-shrink-0 unread-item" id="" style="width: 4px;"></div>
+												<div class="d-flex flex-column justify-content-center">
+													<div style="width: 32px; height: 32px;" class="mail-icon d-flex flex-column justify-content-center text-white rounded-circle text-center m-1 me-2">DT</div>
+												</div>
+												<div class="d-inline-block my-auto flex-grow-1 text-truncate" id="mail-list-title" style="">
+													<span class="mail-list-from" id="" style="">Dell Technology</span>
+													<span class="small mail-list-subject" id="" style="">Take Your Career to the Next Level</span>
+													<span class="small mail-list-body" id="" style="">Join us for Dell Technologies World in Las Vegas. As a partner, you’ll have exclusive access to the Global Partner Summit general session, the Partner Lounge and a curated Partner Journey of activities</span>
+												</div>
+												<div class="flex-shrink-0 small text-end mail-date" id="" style="padding: 0 4px;">2 days ago</div>
+											</label>
+											<label class="d-flex w-100 list-group-item list-group-item-action p-0 border-start-0 border-secondary border-opacity-50" role="button" for="content-013">
+												<div class="flex-shrink-0 unread-item" id="" style="width: 4px;"></div>
+												<div class="d-flex flex-column justify-content-center">
+													<div style="width: 32px; height: 32px;" class="mail-icon d-flex flex-column justify-content-center text-white rounded-circle text-center m-1 me-2">DT</div>
+												</div>
+												<div class="d-inline-block my-auto flex-grow-1 text-truncate" id="mail-list-title" style="">
+													<span class="mail-list-from" id="" style="">Dell Technology</span>
+													<span class="small mail-list-subject" id="" style="">Take Your Career to the Next Level</span>
+													<span class="small mail-list-body" id="" style="">Join us for Dell Technologies World in Las Vegas. As a partner, you’ll have exclusive access to the Global Partner Summit general session, the Partner Lounge and a curated Partner Journey of activities</span>
+												</div>
+												<div class="flex-shrink-0 small text-end mail-date" id="" style="padding: 0 4px;">2 days ago</div>
+											</label>
+											<label class="d-flex w-100 list-group-item list-group-item-action p-0 border-start-0 border-secondary border-opacity-50" role="button" for="content-014">
+												<div class="flex-shrink-0 unread-item" id="" style="width: 4px;"></div>
+												<div class="d-flex flex-column justify-content-center">
+													<div style="width: 32px; height: 32px;" class="mail-icon d-flex flex-column justify-content-center text-white rounded-circle text-center m-1 me-2">DT</div>
+												</div>
+												<div class="d-inline-block my-auto flex-grow-1 text-truncate" id="mail-list-title" style="">
+													<span class="mail-list-from" id="" style="">Dell Technology</span>
+													<span class="small mail-list-subject" id="" style="">Take Your Career to the Next Level</span>
+													<span class="small mail-list-body" id="" style="">Join us for Dell Technologies World in Las Vegas. As a partner, you’ll have exclusive access to the Global Partner Summit general session, the Partner Lounge and a curated Partner Journey of activities</span>
+												</div>
+												<div class="flex-shrink-0 small text-end mail-date" id="" style="padding: 0 4px;">2 days ago</div>
+											</label>
+											<label class="d-flex w-100 list-group-item list-group-item-action p-0 border-start-0 border-secondary border-opacity-50" role="button" for="content-015">
+												<div class="flex-shrink-0 unread-item" id="" style="width: 4px;"></div>
+												<div class="d-flex flex-column justify-content-center">
+													<div style="width: 32px; height: 32px;" class="mail-icon d-flex flex-column justify-content-center text-white rounded-circle text-center m-1 me-2">DT</div>
+												</div>
+												<div class="d-inline-block my-auto flex-grow-1 text-truncate" id="mail-list-title" style="">
+													<span class="mail-list-from" id="" style="">Dell Technology</span>
+													<span class="small mail-list-subject" id="" style="">Take Your Career to the Next Level</span>
+													<span class="small mail-list-body" id="" style="">Join us for Dell Technologies World in Las Vegas. As a partner, you’ll have exclusive access to the Global Partner Summit general session, the Partner Lounge and a curated Partner Journey of activities</span>
+												</div>
+												<div class="flex-shrink-0 small text-end mail-date" id="" style="padding: 0 4px;">2 days ago</div>
+											</label>
+											<label class="d-flex w-100 list-group-item list-group-item-action p-0 border-start-0 border-secondary border-opacity-50" role="button" for="content-016">
+												<div class="flex-shrink-0 unread-item" id="" style="width: 4px;"></div>
+												<div class="d-flex flex-column justify-content-center">
+													<div style="width: 32px; height: 32px;" class="mail-icon d-flex flex-column justify-content-center text-white rounded-circle text-center m-1 me-2">DT</div>
+												</div>
+												<div class="d-inline-block my-auto flex-grow-1 text-truncate" id="mail-list-title" style="">
+													<span class="mail-list-from" id="" style="">Dell Technology</span>
+													<span class="small mail-list-subject" id="" style="">Take Your Career to the Next Level</span>
+													<span class="small mail-list-body" id="" style="">Join us for Dell Technologies World in Las Vegas. As a partner, you’ll have exclusive access to the Global Partner Summit general session, the Partner Lounge and a curated Partner Journey of activities</span>
+												</div>
+												<div class="flex-shrink-0 small text-end mail-date" id="" style="padding: 0 4px;">2 days ago</div>
+											</label>
+											<label class="d-flex w-100 list-group-item list-group-item-action p-0 border-start-0 border-secondary border-opacity-50" role="button" for="content-017">
+												<div class="flex-shrink-0 unread-item" id="" style="width: 4px;"></div>
+												<div class="d-flex flex-column justify-content-center">
+													<div style="width: 32px; height: 32px;" class="mail-icon d-flex flex-column justify-content-center text-white rounded-circle text-center m-1 me-2">DT</div>
+												</div>
+												<div class="d-inline-block my-auto flex-grow-1 text-truncate" id="mail-list-title" style="">
+													<span class="mail-list-from" id="" style="">Dell Technology</span>
+													<span class="small mail-list-subject" id="" style="">Take Your Career to the Previous Level</span>
+													<span class="small mail-list-body" id="" style="">Join us for Dell Technologies World in Las Vegas. As a partner, you’ll have exclusive access to the Global Partner Summit general session, the Partner Lounge and a curated Partner Journey of activities</span>
+												</div>
+												<div class="flex-shrink-0 small text-end mail-date" id="" style="padding: 0 4px;">2 days ago</div>
+											</label>
+										</div>
+									</div>
+
+								</div>
+
+								<!-- Mail content panel -->
+								<div class="d-flex flex-column border-start-0 flex-grow-1 panel" style="" id="mailcontent">
+
+									<!-- Empty Mail : show envelope and message -->
+									<div class="justify-content-center text-center align-items-center h-100 border border-secondary border-opacity-25" id="empty-mail">
+										<div class="">
+											<i class="bi bi-envelope-fill display-1"></i>
+											<span class="d-block fs-6">Select an item to read</span>
+										</div>
+									</div>
+
+									<!-- New Mail -->
+									<div class="flex-column flex-fill mail" style="overflow-y: auto;" id="mail-new">
+
+										<div class="d-flex flex-column flex-fill p-2 border border-secondary border-opacity-25" id="">
+											<!-- Mail header and close button -->
+											<!--div class="d-flex justify-content-between w-100 ">
+											</div-->
+											<div class="d-grid gap-2">
+												<!--div class="d-inline"><span style="color: var(--ma-mail-list-body-color);">From : </span>Guest</div-->
+												<div class="d-flex">
+													<!--div class="flex-grow-1 bg-primary">
+													</div-->
+													<div class="input-group input-group-sm">
+														<label class="input-group-text panel" for="inputGroupSelect01">From : </label>
+														<select class="form-select sender" id="inputGroupSelect01">
+															<option selected>Guest</option>
+														</select>
+													</div>
+													<label class="float-end ms-2" role="button" for="content-empty"><i class="bi bi-x-lg fs-5"></i></label>
+												</div>
+												<div class="input-group input-group-sm">
+													<span class="input-group-text panel" id="basic-addon1">To : </span>
+													<input type="text" class="form-control recipient" placeholder="Recipient" aria-label="Username" aria-describedby="basic-addon1">
+												</div>
+												<div class="input-group input-group-sm">
+													<input type="text" class="form-control object" placeholder="Object">
+												</div>
+											</div>
+											<hr class="my-2" />
+											<!-- Mail body -->
+											<div class="d-flex flex-column flex-fill" style="overflow-y: auto; text-align: justify;">
+												<!-- Mail body (textarea) -->
+												<div class="input-group input-group-sm flex-fill pb-2">
+													<textarea class="form-control body"></textarea>
+												</div>
+												<!-- Buttons : Cancel and Send -->
+												<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+													<label class="btn btn-sm btn-secondary" role="button" for="content-empty">Cancel</label>
+													<label class="btn btn-sm btn-create" role="button" for="content-empty">Send</label>
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+									<!-- Mail : show headers and content -->
+									<div class="flex-column flex-fill mail" style="overflow-y: auto;" id="mail-001">
+
+										<div class="flex-fill p-2 border border-secondary border-opacity-25" id="">
+											<!-- Mail header and close button -->
+											<div class="d-flex justify-content-between w-100 ">
+												<span class="" id="">Take Your Career to the Next Level</span>
+												<label class="" role="button" for="content-empty"><i class="bi bi-x-lg fs-5"></i></label>
+											</div>
+											<div class="">
+												<div class=""><span style="color: var(--ma-mail-list-body-color);">From : </span>Dell Technology</div>
+												<div class="small d-inline"><span style="color: var(--ma-mail-list-body-color);">To : </span>Guest</div>
+												<div class="small float-end">2 days ago</div>
+											</div>
+											<hr class="my-2" />
+											<!-- Mail body -->
+											<span class="d-block px-2" style="overflow-y: auto; text-align: justify;">
+												<div class="figure m-4 p-4 border border-secondary border-opacity-25 text-center" style="float: right;">
+													<i class="bi bi-display fs-1 figure-img img-fluid rounded"></i>
+													<figcaption class="figure-caption">Lorem ipsum dolor</figcaption>
+												</div>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor consequat id porta nibh venenatis. Sed adipiscing diam donec adipiscing. Duis ut diam quam nulla porttitor massa id neque aliquam. Facilisi cras fermentum odio eu feugiat pretium. Massa sapien faucibus et molestie ac feugiat sed. Amet mattis vulputate enim nulla aliquet. Nulla aliquet enim tortor at auctor urna nunc id. Sagittis id consectetur purus ut faucibus pulvinar elementum. Vel facilisis volutpat est velit egestas dui. Facilisis volutpat est velit egestas dui id ornare arcu odio. Sit amet commodo nulla facilisi nullam vehicula ipsum. Aliquam nulla facilisi cras fermentum odio eu feugiat pretium. Porta lorem mollis aliquam ut porttitor. Tortor condimentum lacinia quis vel eros donec ac odio. Dolor sit amet consectetur adipiscing. Iaculis urna id volutpat lacus laoreet non curabitur. Vel turpis nunc eget lorem dolor sed viverra ipsum. In ornare quam viverra orci sagittis eu. Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec.
+
+	Consequat interdum varius sit amet mattis vulputate enim nulla aliquet. Bibendum enim facilisis gravida neque convallis a cras semper auctor. Dui id ornare arcu odio ut. Orci ac auctor augue mauris. Faucibus et molestie ac feugiat sed. Ut sem nulla pharetra diam. Potenti nullam ac tortor vitae purus. In metus vulputate eu scelerisque felis. Tempor nec feugiat nisl pretium fusce. Nec tincidunt praesent semper feugiat nibh sed pulvinar. Sagittis id consectetur purus ut.
+
+	Sit amet porttitor eget dolor morbi non arcu risus. Orci dapibus ultrices in iaculis nunc. Id neque aliquam vestibulum morbi blandit cursus risus. Ultricies mi eget mauris pharetra et ultrices neque ornare. Adipiscing commodo elit at imperdiet dui accumsan. Faucibus a pellentesque sit amet porttitor. Venenatis tellus in metus vulputate. Non diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Purus in mollis nunc sed id semper risus in hendrerit. In massa tempor nec feugiat nisl pretium. Tortor pretium viverra suspendisse potenti nullam ac. Sit amet consectetur adipiscing elit pellentesque habitant. Ut consequat semper viverra nam libero justo laoreet sit amet. Non arcu risus quis varius quam quisque id. Aenean sed adipiscing diam donec adipiscing tristique risus nec feugiat. Lacus laoreet non curabitur gravida arcu ac. Quis lectus nulla at volutpat diam. Augue mauris augue neque gravida in fermentum et sollicitudin ac.
+
+	Sit amet justo donec enim diam vulputate. Adipiscing commodo elit at imperdiet dui accumsan sit. Ac tortor dignissim convallis aenean et tortor at. Sit amet risus nullam eget felis eget nunc lobortis. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. Mi proin sed libero enim sed faucibus turpis in eu. Sit amet aliquam id diam maecenas ultricies. Nisi vitae suscipit tellus mauris a diam maecenas. Pellentesque pulvinar pellentesque habitant morbi tristique senectus et netus. Cursus euismod quis viverra nibh cras pulvinar mattis. Nisi quis eleifend quam adipiscing vitae proin sagittis. Diam quam nulla porttitor massa. Diam donec adipiscing tristique risus nec feugiat in fermentum. Sagittis id consectetur purus ut faucibus. Commodo nulla facilisi nullam vehicula. Ipsum dolor sit amet consectetur adipiscing elit duis. Arcu risus quis varius quam quisque id diam vel quam. Aenean sed adipiscing diam donec adipiscing tristique risus.
+
+	Et malesuada fames ac turpis egestas maecenas pharetra convallis. Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Eu ultrices vitae auctor eu augue ut lectus arcu bibendum. Fames ac turpis egestas sed tempus. Nulla aliquet enim tortor at auctor. Nam at lectus urna duis convallis convallis tellus id interdum. Turpis cursus in hac habitasse platea dictumst quisque sagittis. Turpis cursus in hac habitasse platea dictumst. Morbi leo urna molestie at elementum eu facilisis sed odio. Semper auctor neque vitae tempus quam pellentesque nec nam aliquam. Dictum varius duis at consectetur lorem donec massa sapien. Auctor eu augue ut lectus arcu bibendum at varius. Velit ut tortor pretium viverra suspendisse potenti nullam ac. Nulla facilisi cras fermentum odio eu feugiat pretium nibh ipsum. Urna duis convallis convallis tellus. Consequat nisl vel pretium lectus quam id leo in vitae. Ut sem nulla pharetra diam sit. Integer feugiat scelerisque varius morbi enim nunc. Eu facilisis sed odio morbi quis.</span>
+										</div>
+
+									</div>
+
+									<div class="flex-column flex-fill mail" style="overflow-y: auto;" id="mail-002">
+
+										<div class="flex-fill p-2 border border-secondary border-opacity-25" id="">
+											<!-- Mail header and close button -->
+											<div class="d-flex justify-content-between w-100 ">
+												<span class="" id="">Hop into Easter savings with Life Rewards</span>
+												<label class="" role="button" for="content-empty"><i class="bi bi-x-lg fs-5"></i></label>
+											</div>
+											<div class="">
+												<div class=""><span style="color: var(--ma-mail-list-body-color);">From : </span>BUPA</div>
+												<div class="small d-inline"><span style="color: var(--ma-mail-list-body-color);">To : </span>Guest</div>
+												<div class="small float-end">2 days ago</div>
+											</div>
+											<hr class="my-2" />
+											<!-- Mail body -->
+											<span class="d-block px-2" style="overflow-y: auto; text-align: justify;">
+												<div class="figure m-4 p-4 border border-secondary border-opacity-25 text-center" style="float: right;">
+													<i class="bi bi-h-square fs-1 figure-img img-fluid rounded"></i>
+													<figcaption class="figure-caption">Lorem ipsum dolor</figcaption>
+												</div>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor consequat id porta nibh venenatis. Sed adipiscing diam donec adipiscing. Duis ut diam quam nulla porttitor massa id neque aliquam. Facilisi cras fermentum odio eu feugiat pretium. Massa sapien faucibus et molestie ac feugiat sed. Amet mattis vulputate enim nulla aliquet. Nulla aliquet enim tortor at auctor urna nunc id. Sagittis id consectetur purus ut faucibus pulvinar elementum. Vel facilisis volutpat est velit egestas dui. Facilisis volutpat est velit egestas dui id ornare arcu odio. Sit amet commodo nulla facilisi nullam vehicula ipsum. Aliquam nulla facilisi cras fermentum odio eu feugiat pretium. Porta lorem mollis aliquam ut porttitor. Tortor condimentum lacinia quis vel eros donec ac odio. Dolor sit amet consectetur adipiscing. Iaculis urna id volutpat lacus laoreet non curabitur. Vel turpis nunc eget lorem dolor sed viverra ipsum. In ornare quam viverra orci sagittis eu. Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec.
+
+	Consequat interdum varius sit amet mattis vulputate enim nulla aliquet. Bibendum enim facilisis gravida neque convallis a cras semper auctor. Dui id ornare arcu odio ut. Orci ac auctor augue mauris. Faucibus et molestie ac feugiat sed. Ut sem nulla pharetra diam. Potenti nullam ac tortor vitae purus. In metus vulputate eu scelerisque felis. Tempor nec feugiat nisl pretium fusce. Nec tincidunt praesent semper feugiat nibh sed pulvinar. Sagittis id consectetur purus ut.
+
+	Sit amet porttitor eget dolor morbi non arcu risus. Orci dapibus ultrices in iaculis nunc. Id neque aliquam vestibulum morbi blandit cursus risus. Ultricies mi eget mauris pharetra et ultrices neque ornare. Adipiscing commodo elit at imperdiet dui accumsan. Faucibus a pellentesque sit amet porttitor. Venenatis tellus in metus vulputate. Non diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Purus in mollis nunc sed id semper risus in hendrerit. In massa tempor nec feugiat nisl pretium. Tortor pretium viverra suspendisse potenti nullam ac. Sit amet consectetur adipiscing elit pellentesque habitant. Ut consequat semper viverra nam libero justo laoreet sit amet. Non arcu risus quis varius quam quisque id. Aenean sed adipiscing diam donec adipiscing tristique risus nec feugiat. Lacus laoreet non curabitur gravida arcu ac. Quis lectus nulla at volutpat diam. Augue mauris augue neque gravida in fermentum et sollicitudin ac.
+
+	Sit amet justo donec enim diam vulputate. Adipiscing commodo elit at imperdiet dui accumsan sit. Ac tortor dignissim convallis aenean et tortor at. Sit amet risus nullam eget felis eget nunc lobortis. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. Mi proin sed libero enim sed faucibus turpis in eu. Sit amet aliquam id diam maecenas ultricies. Nisi vitae suscipit tellus mauris a diam maecenas. Pellentesque pulvinar pellentesque habitant morbi tristique senectus et netus. Cursus euismod quis viverra nibh cras pulvinar mattis. Nisi quis eleifend quam adipiscing vitae proin sagittis. Diam quam nulla porttitor massa. Diam donec adipiscing tristique risus nec feugiat in fermentum. Sagittis id consectetur purus ut faucibus. Commodo nulla facilisi nullam vehicula. Ipsum dolor sit amet consectetur adipiscing elit duis. Arcu risus quis varius quam quisque id diam vel quam. Aenean sed adipiscing diam donec adipiscing tristique risus.
+
+	Et malesuada fames ac turpis egestas maecenas pharetra convallis. Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Eu ultrices vitae auctor eu augue ut lectus arcu bibendum. Fames ac turpis egestas sed tempus. Nulla aliquet enim tortor at auctor. Nam at lectus urna duis convallis convallis tellus id interdum. Turpis cursus in hac habitasse platea dictumst quisque sagittis. Turpis cursus in hac habitasse platea dictumst. Morbi leo urna molestie at elementum eu facilisis sed odio. Semper auctor neque vitae tempus quam pellentesque nec nam aliquam. Dictum varius duis at consectetur lorem donec massa sapien. Auctor eu augue ut lectus arcu bibendum at varius. Velit ut tortor pretium viverra suspendisse potenti nullam ac. Nulla facilisi cras fermentum odio eu feugiat pretium nibh ipsum. Urna duis convallis convallis tellus. Consequat nisl vel pretium lectus quam id leo in vitae. Ut sem nulla pharetra diam sit. Integer feugiat scelerisque varius morbi enim nunc. Eu facilisis sed odio morbi quis.</span>
+										</div>
+
+									</div>
+
+									<div class="flex-column flex-fill mail" style="overflow-y: auto;" id="mail-003">
+
+										<div class="flex-fill p-2 border border-secondary border-opacity-25" id="">
+											<!-- Mail header and close button -->
+											<div class="d-flex justify-content-between w-100 ">
+												<span class="" id="">Explore our smart home catalogue</span>
+												<label class="" role="button" for="content-empty"><i class="bi bi-x-lg fs-5"></i></label>
+											</div>
+											<div class="">
+												<div class=""><span style="color: var(--ma-mail-list-body-color);">From : </span>Officeworks</div>
+												<div class="small d-inline"><span style="color: var(--ma-mail-list-body-color);">To : </span>Guest</div>
+												<div class="small float-end">23 Mar</div>
+											</div>
+											<hr class="my-2" />
+											<!-- Mail body -->
+											<span class="d-block px-2" style="overflow-y: auto; text-align: justify;">
+												<div class="figure m-4 p-4 border border-secondary border-opacity-25 text-center" style="float: right;">
+													<i class="bi bi-briefcase fs-1 figure-img img-fluid rounded"></i>
+													<figcaption class="figure-caption">Lorem ipsum dolor</figcaption>
+												</div>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor consequat id porta nibh venenatis. Sed adipiscing diam donec adipiscing. Duis ut diam quam nulla porttitor massa id neque aliquam. Facilisi cras fermentum odio eu feugiat pretium. Massa sapien faucibus et molestie ac feugiat sed. Amet mattis vulputate enim nulla aliquet. Nulla aliquet enim tortor at auctor urna nunc id. Sagittis id consectetur purus ut faucibus pulvinar elementum. Vel facilisis volutpat est velit egestas dui. Facilisis volutpat est velit egestas dui id ornare arcu odio. Sit amet commodo nulla facilisi nullam vehicula ipsum. Aliquam nulla facilisi cras fermentum odio eu feugiat pretium. Porta lorem mollis aliquam ut porttitor. Tortor condimentum lacinia quis vel eros donec ac odio. Dolor sit amet consectetur adipiscing. Iaculis urna id volutpat lacus laoreet non curabitur. Vel turpis nunc eget lorem dolor sed viverra ipsum. In ornare quam viverra orci sagittis eu. Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec.
+
+Consequat interdum varius sit amet mattis vulputate enim nulla aliquet. Bibendum enim facilisis gravida neque convallis a cras semper auctor. Dui id ornare arcu odio ut. Orci ac auctor augue mauris. Faucibus et molestie ac feugiat sed. Ut sem nulla pharetra diam. Potenti nullam ac tortor vitae purus. In metus vulputate eu scelerisque felis. Tempor nec feugiat nisl pretium fusce. Nec tincidunt praesent semper feugiat nibh sed pulvinar. Sagittis id consectetur purus ut.
+
+Sit amet porttitor eget dolor morbi non arcu risus. Orci dapibus ultrices in iaculis nunc. Id neque aliquam vestibulum morbi blandit cursus risus. Ultricies mi eget mauris pharetra et ultrices neque ornare. Adipiscing commodo elit at imperdiet dui accumsan. Faucibus a pellentesque sit amet porttitor. Venenatis tellus in metus vulputate. Non diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Purus in mollis nunc sed id semper risus in hendrerit. In massa tempor nec feugiat nisl pretium. Tortor pretium viverra suspendisse potenti nullam ac. Sit amet consectetur adipiscing elit pellentesque habitant. Ut consequat semper viverra nam libero justo laoreet sit amet. Non arcu risus quis varius quam quisque id. Aenean sed adipiscing diam donec adipiscing tristique risus nec feugiat. Lacus laoreet non curabitur gravida arcu ac. Quis lectus nulla at volutpat diam. Augue mauris augue neque gravida in fermentum et sollicitudin ac.
+
+Sit amet justo donec enim diam vulputate. Adipiscing commodo elit at imperdiet dui accumsan sit. Ac tortor dignissim convallis aenean et tortor at. Sit amet risus nullam eget felis eget nunc lobortis. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. Mi proin sed libero enim sed faucibus turpis in eu. Sit amet aliquam id diam maecenas ultricies. Nisi vitae suscipit tellus mauris a diam maecenas. Pellentesque pulvinar pellentesque habitant morbi tristique senectus et netus. Cursus euismod quis viverra nibh cras pulvinar mattis. Nisi quis eleifend quam adipiscing vitae proin sagittis. Diam quam nulla porttitor massa. Diam donec adipiscing tristique risus nec feugiat in fermentum. Sagittis id consectetur purus ut faucibus. Commodo nulla facilisi nullam vehicula. Ipsum dolor sit amet consectetur adipiscing elit duis. Arcu risus quis varius quam quisque id diam vel quam. Aenean sed adipiscing diam donec adipiscing tristique risus.
+
+Et malesuada fames ac turpis egestas maecenas pharetra convallis. Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Eu ultrices vitae auctor eu augue ut lectus arcu bibendum. Fames ac turpis egestas sed tempus. Nulla aliquet enim tortor at auctor. Nam at lectus urna duis convallis convallis tellus id interdum. Turpis cursus in hac habitasse platea dictumst quisque sagittis. Turpis cursus in hac habitasse platea dictumst. Morbi leo urna molestie at elementum eu facilisis sed odio. Semper auctor neque vitae tempus quam pellentesque nec nam aliquam. Dictum varius duis at consectetur lorem donec massa sapien. Auctor eu augue ut lectus arcu bibendum at varius. Velit ut tortor pretium viverra suspendisse potenti nullam ac. Nulla facilisi cras fermentum odio eu feugiat pretium nibh ipsum. Urna duis convallis convallis tellus. Consequat nisl vel pretium lectus quam id leo in vitae. Ut sem nulla pharetra diam sit. Integer feugiat scelerisque varius morbi enim nunc. Eu facilisis sed odio morbi quis.</span>
+										</div>
+
+									</div>
+
+									<div class="flex-column flex-fill mail" style="overflow-y: auto;" id="mail-004">
+
+										<div class="flex-fill p-2 border border-secondary border-opacity-25" id="">
+											<!-- Mail header and close button -->
+											<div class="d-flex justify-content-between w-100 ">
+												<span class="" id="">Absinthe: A Classic French Tradition</span>
+												<label class="" role="button" for="content-empty"><i class="bi bi-x-lg fs-5"></i></label>
+											</div>
+											<div class="">
+												<div class=""><span style="color: var(--ma-mail-list-body-color);">From : </span>Spirit of France</div>
+												<div class="small d-inline"><span style="color: var(--ma-mail-list-body-color);">To : </span>Guest</div>
+												<div class="small float-end">11 Mar</div>
+											</div>
+											<hr class="my-2" />
+											<!-- Mail body -->
+											<span class="d-block px-2" style="overflow-y: auto; text-align: justify;">
+												<div class="figure m-4 p-4 border border-secondary border-opacity-25 text-center" style="float: right;">
+													<i class="bi bi-droplet fs-1 figure-img img-fluid rounded"></i>
+													<figcaption class="figure-caption">Lorem ipsum dolor</figcaption>
+												</div>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor consequat id porta nibh venenatis. Sed adipiscing diam donec adipiscing. Duis ut diam quam nulla porttitor massa id neque aliquam. Facilisi cras fermentum odio eu feugiat pretium. Massa sapien faucibus et molestie ac feugiat sed. Amet mattis vulputate enim nulla aliquet. Nulla aliquet enim tortor at auctor urna nunc id. Sagittis id consectetur purus ut faucibus pulvinar elementum. Vel facilisis volutpat est velit egestas dui. Facilisis volutpat est velit egestas dui id ornare arcu odio. Sit amet commodo nulla facilisi nullam vehicula ipsum. Aliquam nulla facilisi cras fermentum odio eu feugiat pretium. Porta lorem mollis aliquam ut porttitor. Tortor condimentum lacinia quis vel eros donec ac odio. Dolor sit amet consectetur adipiscing. Iaculis urna id volutpat lacus laoreet non curabitur. Vel turpis nunc eget lorem dolor sed viverra ipsum. In ornare quam viverra orci sagittis eu. Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec.
+
+Consequat interdum varius sit amet mattis vulputate enim nulla aliquet. Bibendum enim facilisis gravida neque convallis a cras semper auctor. Dui id ornare arcu odio ut. Orci ac auctor augue mauris. Faucibus et molestie ac feugiat sed. Ut sem nulla pharetra diam. Potenti nullam ac tortor vitae purus. In metus vulputate eu scelerisque felis. Tempor nec feugiat nisl pretium fusce. Nec tincidunt praesent semper feugiat nibh sed pulvinar. Sagittis id consectetur purus ut.
+
+Sit amet porttitor eget dolor morbi non arcu risus. Orci dapibus ultrices in iaculis nunc. Id neque aliquam vestibulum morbi blandit cursus risus. Ultricies mi eget mauris pharetra et ultrices neque ornare. Adipiscing commodo elit at imperdiet dui accumsan. Faucibus a pellentesque sit amet porttitor. Venenatis tellus in metus vulputate. Non diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Purus in mollis nunc sed id semper risus in hendrerit. In massa tempor nec feugiat nisl pretium. Tortor pretium viverra suspendisse potenti nullam ac. Sit amet consectetur adipiscing elit pellentesque habitant. Ut consequat semper viverra nam libero justo laoreet sit amet. Non arcu risus quis varius quam quisque id. Aenean sed adipiscing diam donec adipiscing tristique risus nec feugiat. Lacus laoreet non curabitur gravida arcu ac. Quis lectus nulla at volutpat diam. Augue mauris augue neque gravida in fermentum et sollicitudin ac.
+
+Sit amet justo donec enim diam vulputate. Adipiscing commodo elit at imperdiet dui accumsan sit. Ac tortor dignissim convallis aenean et tortor at. Sit amet risus nullam eget felis eget nunc lobortis. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. Mi proin sed libero enim sed faucibus turpis in eu. Sit amet aliquam id diam maecenas ultricies. Nisi vitae suscipit tellus mauris a diam maecenas. Pellentesque pulvinar pellentesque habitant morbi tristique senectus et netus. Cursus euismod quis viverra nibh cras pulvinar mattis. Nisi quis eleifend quam adipiscing vitae proin sagittis. Diam quam nulla porttitor massa. Diam donec adipiscing tristique risus nec feugiat in fermentum. Sagittis id consectetur purus ut faucibus. Commodo nulla facilisi nullam vehicula. Ipsum dolor sit amet consectetur adipiscing elit duis. Arcu risus quis varius quam quisque id diam vel quam. Aenean sed adipiscing diam donec adipiscing tristique risus.
+
+Et malesuada fames ac turpis egestas maecenas pharetra convallis. Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Eu ultrices vitae auctor eu augue ut lectus arcu bibendum. Fames ac turpis egestas sed tempus. Nulla aliquet enim tortor at auctor. Nam at lectus urna duis convallis convallis tellus id interdum. Turpis cursus in hac habitasse platea dictumst quisque sagittis. Turpis cursus in hac habitasse platea dictumst. Morbi leo urna molestie at elementum eu facilisis sed odio. Semper auctor neque vitae tempus quam pellentesque nec nam aliquam. Dictum varius duis at consectetur lorem donec massa sapien. Auctor eu augue ut lectus arcu bibendum at varius. Velit ut tortor pretium viverra suspendisse potenti nullam ac. Nulla facilisi cras fermentum odio eu feugiat pretium nibh ipsum. Urna duis convallis convallis tellus. Consequat nisl vel pretium lectus quam id leo in vitae. Ut sem nulla pharetra diam sit. Integer feugiat scelerisque varius morbi enim nunc. Eu facilisis sed odio morbi quis.</span>
+										</div>
+
+									</div>
+
+									<div class="flex-column flex-fill mail" style="overflow-y: auto;" id="mail-005">
+
+										<div class="flex-fill p-2 border border-secondary border-opacity-25" id="">
+											<!-- Mail header and close button -->
+											<div class="d-flex justify-content-between w-100 ">
+												<span class="" id="">How was your experience?</span>
+												<label class="" role="button" for="content-empty"><i class="bi bi-x-lg fs-5"></i></label>
+											</div>
+											<div class="">
+												<div class=""><span style="color: var(--ma-mail-list-body-color);">From : </span>Grill'd Relish</div>
+												<div class="small d-inline"><span style="color: var(--ma-mail-list-body-color);">To : </span>Guest</div>
+												<div class="small float-end">10 Mar</div>
+											</div>
+											<hr class="my-2" />
+											<!-- Mail body -->
+											<span class="d-block px-2" style="overflow-y: auto; text-align: justify;">
+												<div class="figure m-4 p-4 border border-secondary border-opacity-25 text-center" style="float: right;">
+													<i class="bi bi-suit-heart fs-1 figure-img img-fluid rounded"></i>
+													<figcaption class="figure-caption">Lorem ipsum dolor</figcaption>
+												</div>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor consequat id porta nibh venenatis. Sed adipiscing diam donec adipiscing. Duis ut diam quam nulla porttitor massa id neque aliquam. Facilisi cras fermentum odio eu feugiat pretium. Massa sapien faucibus et molestie ac feugiat sed. Amet mattis vulputate enim nulla aliquet. Nulla aliquet enim tortor at auctor urna nunc id. Sagittis id consectetur purus ut faucibus pulvinar elementum. Vel facilisis volutpat est velit egestas dui. Facilisis volutpat est velit egestas dui id ornare arcu odio. Sit amet commodo nulla facilisi nullam vehicula ipsum. Aliquam nulla facilisi cras fermentum odio eu feugiat pretium. Porta lorem mollis aliquam ut porttitor. Tortor condimentum lacinia quis vel eros donec ac odio. Dolor sit amet consectetur adipiscing. Iaculis urna id volutpat lacus laoreet non curabitur. Vel turpis nunc eget lorem dolor sed viverra ipsum. In ornare quam viverra orci sagittis eu. Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec.
+
+Consequat interdum varius sit amet mattis vulputate enim nulla aliquet. Bibendum enim facilisis gravida neque convallis a cras semper auctor. Dui id ornare arcu odio ut. Orci ac auctor augue mauris. Faucibus et molestie ac feugiat sed. Ut sem nulla pharetra diam. Potenti nullam ac tortor vitae purus. In metus vulputate eu scelerisque felis. Tempor nec feugiat nisl pretium fusce. Nec tincidunt praesent semper feugiat nibh sed pulvinar. Sagittis id consectetur purus ut.
+
+Sit amet porttitor eget dolor morbi non arcu risus. Orci dapibus ultrices in iaculis nunc. Id neque aliquam vestibulum morbi blandit cursus risus. Ultricies mi eget mauris pharetra et ultrices neque ornare. Adipiscing commodo elit at imperdiet dui accumsan. Faucibus a pellentesque sit amet porttitor. Venenatis tellus in metus vulputate. Non diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Purus in mollis nunc sed id semper risus in hendrerit. In massa tempor nec feugiat nisl pretium. Tortor pretium viverra suspendisse potenti nullam ac. Sit amet consectetur adipiscing elit pellentesque habitant. Ut consequat semper viverra nam libero justo laoreet sit amet. Non arcu risus quis varius quam quisque id. Aenean sed adipiscing diam donec adipiscing tristique risus nec feugiat. Lacus laoreet non curabitur gravida arcu ac. Quis lectus nulla at volutpat diam. Augue mauris augue neque gravida in fermentum et sollicitudin ac.
+
+Sit amet justo donec enim diam vulputate. Adipiscing commodo elit at imperdiet dui accumsan sit. Ac tortor dignissim convallis aenean et tortor at. Sit amet risus nullam eget felis eget nunc lobortis. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. Mi proin sed libero enim sed faucibus turpis in eu. Sit amet aliquam id diam maecenas ultricies. Nisi vitae suscipit tellus mauris a diam maecenas. Pellentesque pulvinar pellentesque habitant morbi tristique senectus et netus. Cursus euismod quis viverra nibh cras pulvinar mattis. Nisi quis eleifend quam adipiscing vitae proin sagittis. Diam quam nulla porttitor massa. Diam donec adipiscing tristique risus nec feugiat in fermentum. Sagittis id consectetur purus ut faucibus. Commodo nulla facilisi nullam vehicula. Ipsum dolor sit amet consectetur adipiscing elit duis. Arcu risus quis varius quam quisque id diam vel quam. Aenean sed adipiscing diam donec adipiscing tristique risus.
+
+Et malesuada fames ac turpis egestas maecenas pharetra convallis. Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Eu ultrices vitae auctor eu augue ut lectus arcu bibendum. Fames ac turpis egestas sed tempus. Nulla aliquet enim tortor at auctor. Nam at lectus urna duis convallis convallis tellus id interdum. Turpis cursus in hac habitasse platea dictumst quisque sagittis. Turpis cursus in hac habitasse platea dictumst. Morbi leo urna molestie at elementum eu facilisis sed odio. Semper auctor neque vitae tempus quam pellentesque nec nam aliquam. Dictum varius duis at consectetur lorem donec massa sapien. Auctor eu augue ut lectus arcu bibendum at varius. Velit ut tortor pretium viverra suspendisse potenti nullam ac. Nulla facilisi cras fermentum odio eu feugiat pretium nibh ipsum. Urna duis convallis convallis tellus. Consequat nisl vel pretium lectus quam id leo in vitae. Ut sem nulla pharetra diam sit. Integer feugiat scelerisque varius morbi enim nunc. Eu facilisis sed odio morbi quis.</span>
+										</div>
+
+									</div>
+
+									<div class="flex-column flex-fill mail" style="overflow-y: auto;" id="mail-006">
+
+										<div class="flex-fill p-2 border border-secondary border-opacity-25" id="">
+											<!-- Mail header and close button -->
+											<div class="d-flex justify-content-between w-100 ">
+												<span class="" id="">Free drink inside!</span>
+												<label class="" role="button" for="content-empty"><i class="bi bi-x-lg fs-5"></i></label>
+											</div>
+											<div class="">
+												<div class=""><span style="color: var(--ma-mail-list-body-color);">From : </span>Grill'd Relish</div>
+												<div class="small d-inline"><span style="color: var(--ma-mail-list-body-color);">To : </span>Guest</div>
+												<div class="small float-end">10 Mar</div>
+											</div>
+											<hr class="my-2" />
+											<!-- Mail body -->
+											<span class="d-block px-2" style="overflow-y: auto; text-align: justify;">
+												<div class="figure m-4 p-4 border border-secondary border-opacity-25 text-center" style="float: right;">
+													<i class="bi bi-suit-heart fs-1 figure-img img-fluid rounded"></i>
+													<figcaption class="figure-caption">Lorem ipsum dolor</figcaption>
+												</div>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor consequat id porta nibh venenatis. Sed adipiscing diam donec adipiscing. Duis ut diam quam nulla porttitor massa id neque aliquam. Facilisi cras fermentum odio eu feugiat pretium. Massa sapien faucibus et molestie ac feugiat sed. Amet mattis vulputate enim nulla aliquet. Nulla aliquet enim tortor at auctor urna nunc id. Sagittis id consectetur purus ut faucibus pulvinar elementum. Vel facilisis volutpat est velit egestas dui. Facilisis volutpat est velit egestas dui id ornare arcu odio. Sit amet commodo nulla facilisi nullam vehicula ipsum. Aliquam nulla facilisi cras fermentum odio eu feugiat pretium. Porta lorem mollis aliquam ut porttitor. Tortor condimentum lacinia quis vel eros donec ac odio. Dolor sit amet consectetur adipiscing. Iaculis urna id volutpat lacus laoreet non curabitur. Vel turpis nunc eget lorem dolor sed viverra ipsum. In ornare quam viverra orci sagittis eu. Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec.
+
+Consequat interdum varius sit amet mattis vulputate enim nulla aliquet. Bibendum enim facilisis gravida neque convallis a cras semper auctor. Dui id ornare arcu odio ut. Orci ac auctor augue mauris. Faucibus et molestie ac feugiat sed. Ut sem nulla pharetra diam. Potenti nullam ac tortor vitae purus. In metus vulputate eu scelerisque felis. Tempor nec feugiat nisl pretium fusce. Nec tincidunt praesent semper feugiat nibh sed pulvinar. Sagittis id consectetur purus ut.
+
+Sit amet porttitor eget dolor morbi non arcu risus. Orci dapibus ultrices in iaculis nunc. Id neque aliquam vestibulum morbi blandit cursus risus. Ultricies mi eget mauris pharetra et ultrices neque ornare. Adipiscing commodo elit at imperdiet dui accumsan. Faucibus a pellentesque sit amet porttitor. Venenatis tellus in metus vulputate. Non diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Purus in mollis nunc sed id semper risus in hendrerit. In massa tempor nec feugiat nisl pretium. Tortor pretium viverra suspendisse potenti nullam ac. Sit amet consectetur adipiscing elit pellentesque habitant. Ut consequat semper viverra nam libero justo laoreet sit amet. Non arcu risus quis varius quam quisque id. Aenean sed adipiscing diam donec adipiscing tristique risus nec feugiat. Lacus laoreet non curabitur gravida arcu ac. Quis lectus nulla at volutpat diam. Augue mauris augue neque gravida in fermentum et sollicitudin ac.
+
+Sit amet justo donec enim diam vulputate. Adipiscing commodo elit at imperdiet dui accumsan sit. Ac tortor dignissim convallis aenean et tortor at. Sit amet risus nullam eget felis eget nunc lobortis. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. Mi proin sed libero enim sed faucibus turpis in eu. Sit amet aliquam id diam maecenas ultricies. Nisi vitae suscipit tellus mauris a diam maecenas. Pellentesque pulvinar pellentesque habitant morbi tristique senectus et netus. Cursus euismod quis viverra nibh cras pulvinar mattis. Nisi quis eleifend quam adipiscing vitae proin sagittis. Diam quam nulla porttitor massa. Diam donec adipiscing tristique risus nec feugiat in fermentum. Sagittis id consectetur purus ut faucibus. Commodo nulla facilisi nullam vehicula. Ipsum dolor sit amet consectetur adipiscing elit duis. Arcu risus quis varius quam quisque id diam vel quam. Aenean sed adipiscing diam donec adipiscing tristique risus.
+
+Et malesuada fames ac turpis egestas maecenas pharetra convallis. Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Eu ultrices vitae auctor eu augue ut lectus arcu bibendum. Fames ac turpis egestas sed tempus. Nulla aliquet enim tortor at auctor. Nam at lectus urna duis convallis convallis tellus id interdum. Turpis cursus in hac habitasse platea dictumst quisque sagittis. Turpis cursus in hac habitasse platea dictumst. Morbi leo urna molestie at elementum eu facilisis sed odio. Semper auctor neque vitae tempus quam pellentesque nec nam aliquam. Dictum varius duis at consectetur lorem donec massa sapien. Auctor eu augue ut lectus arcu bibendum at varius. Velit ut tortor pretium viverra suspendisse potenti nullam ac. Nulla facilisi cras fermentum odio eu feugiat pretium nibh ipsum. Urna duis convallis convallis tellus. Consequat nisl vel pretium lectus quam id leo in vitae. Ut sem nulla pharetra diam sit. Integer feugiat scelerisque varius morbi enim nunc. Eu facilisis sed odio morbi quis.</span>
+										</div>
+
+									</div>
+
+									<div class="flex-column flex-fill mail" style="overflow-y: auto;" id="mail-007">
+
+										<div class="flex-fill p-2 border border-secondary border-opacity-25" id="">
+											<!-- Mail header and close button -->
+											<div class="d-flex justify-content-between w-100 ">
+												<span class="" id="">Service packs and automatic PDF translations</span>
+												<label class="" role="button" for="content-empty"><i class="bi bi-x-lg fs-5"></i></label>
+											</div>
+											<div class="">
+												<div class=""><span style="color: var(--ma-mail-list-body-color);">From : </span>SoftMaker</div>
+												<div class="small d-inline"><span style="color: var(--ma-mail-list-body-color);">To : </span>Guest</div>
+												<div class="small float-end">09 Mar</div>
+											</div>
+											<hr class="my-2" />
+											<!-- Mail body -->
+											<span class="d-block px-2" style="overflow-y: auto; text-align: justify;">
+												<div class="figure m-4 p-4 border border-secondary border-opacity-25 text-center" style="float: right;">
+													<i class="bi bi-code-square fs-1 figure-img img-fluid rounded"></i>
+													<figcaption class="figure-caption">Lorem ipsum dolor</figcaption>
+												</div>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor consequat id porta nibh venenatis. Sed adipiscing diam donec adipiscing. Duis ut diam quam nulla porttitor massa id neque aliquam. Facilisi cras fermentum odio eu feugiat pretium. Massa sapien faucibus et molestie ac feugiat sed. Amet mattis vulputate enim nulla aliquet. Nulla aliquet enim tortor at auctor urna nunc id. Sagittis id consectetur purus ut faucibus pulvinar elementum. Vel facilisis volutpat est velit egestas dui. Facilisis volutpat est velit egestas dui id ornare arcu odio. Sit amet commodo nulla facilisi nullam vehicula ipsum. Aliquam nulla facilisi cras fermentum odio eu feugiat pretium. Porta lorem mollis aliquam ut porttitor. Tortor condimentum lacinia quis vel eros donec ac odio. Dolor sit amet consectetur adipiscing. Iaculis urna id volutpat lacus laoreet non curabitur. Vel turpis nunc eget lorem dolor sed viverra ipsum. In ornare quam viverra orci sagittis eu. Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec.
+
+Consequat interdum varius sit amet mattis vulputate enim nulla aliquet. Bibendum enim facilisis gravida neque convallis a cras semper auctor. Dui id ornare arcu odio ut. Orci ac auctor augue mauris. Faucibus et molestie ac feugiat sed. Ut sem nulla pharetra diam. Potenti nullam ac tortor vitae purus. In metus vulputate eu scelerisque felis. Tempor nec feugiat nisl pretium fusce. Nec tincidunt praesent semper feugiat nibh sed pulvinar. Sagittis id consectetur purus ut.
+
+Sit amet porttitor eget dolor morbi non arcu risus. Orci dapibus ultrices in iaculis nunc. Id neque aliquam vestibulum morbi blandit cursus risus. Ultricies mi eget mauris pharetra et ultrices neque ornare. Adipiscing commodo elit at imperdiet dui accumsan. Faucibus a pellentesque sit amet porttitor. Venenatis tellus in metus vulputate. Non diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Purus in mollis nunc sed id semper risus in hendrerit. In massa tempor nec feugiat nisl pretium. Tortor pretium viverra suspendisse potenti nullam ac. Sit amet consectetur adipiscing elit pellentesque habitant. Ut consequat semper viverra nam libero justo laoreet sit amet. Non arcu risus quis varius quam quisque id. Aenean sed adipiscing diam donec adipiscing tristique risus nec feugiat. Lacus laoreet non curabitur gravida arcu ac. Quis lectus nulla at volutpat diam. Augue mauris augue neque gravida in fermentum et sollicitudin ac.
+
+Sit amet justo donec enim diam vulputate. Adipiscing commodo elit at imperdiet dui accumsan sit. Ac tortor dignissim convallis aenean et tortor at. Sit amet risus nullam eget felis eget nunc lobortis. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. Mi proin sed libero enim sed faucibus turpis in eu. Sit amet aliquam id diam maecenas ultricies. Nisi vitae suscipit tellus mauris a diam maecenas. Pellentesque pulvinar pellentesque habitant morbi tristique senectus et netus. Cursus euismod quis viverra nibh cras pulvinar mattis. Nisi quis eleifend quam adipiscing vitae proin sagittis. Diam quam nulla porttitor massa. Diam donec adipiscing tristique risus nec feugiat in fermentum. Sagittis id consectetur purus ut faucibus. Commodo nulla facilisi nullam vehicula. Ipsum dolor sit amet consectetur adipiscing elit duis. Arcu risus quis varius quam quisque id diam vel quam. Aenean sed adipiscing diam donec adipiscing tristique risus.
+
+Et malesuada fames ac turpis egestas maecenas pharetra convallis. Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Eu ultrices vitae auctor eu augue ut lectus arcu bibendum. Fames ac turpis egestas sed tempus. Nulla aliquet enim tortor at auctor. Nam at lectus urna duis convallis convallis tellus id interdum. Turpis cursus in hac habitasse platea dictumst quisque sagittis. Turpis cursus in hac habitasse platea dictumst. Morbi leo urna molestie at elementum eu facilisis sed odio. Semper auctor neque vitae tempus quam pellentesque nec nam aliquam. Dictum varius duis at consectetur lorem donec massa sapien. Auctor eu augue ut lectus arcu bibendum at varius. Velit ut tortor pretium viverra suspendisse potenti nullam ac. Nulla facilisi cras fermentum odio eu feugiat pretium nibh ipsum. Urna duis convallis convallis tellus. Consequat nisl vel pretium lectus quam id leo in vitae. Ut sem nulla pharetra diam sit. Integer feugiat scelerisque varius morbi enim nunc. Eu facilisis sed odio morbi quis.</span>
+										</div>
+
+									</div>
+
+									<div class="flex-column flex-fill mail" style="overflow-y: auto;" id="mail-008">
+
+										<div class="flex-fill p-2 border border-secondary border-opacity-25" id="">
+											<!-- Mail header and close button -->
+											<div class="d-flex justify-content-between w-100 ">
+												<span class="" id="">Our NEW pets range is now available</span>
+												<label class="" role="button" for="content-empty"><i class="bi bi-x-lg fs-5"></i></label>
+											</div>
+											<div class="">
+												<div class=""><span style="color: var(--ma-mail-list-body-color);">From : </span>Bunnings</div>
+												<div class="small d-inline"><span style="color: var(--ma-mail-list-body-color);">To : </span>Guest</div>
+												<div class="small float-end">06 Mar</div>
+											</div>
+											<hr class="my-2" />
+											<!-- Mail body -->
+											<span class="d-block px-2" style="overflow-y: auto; text-align: justify;">
+												<div class="figure m-4 p-4 border border-secondary border-opacity-25 text-center" style="float: right;">
+													<i class="bi bi-flower1 fs-1 figure-img img-fluid rounded"></i>
+													<figcaption class="figure-caption">Lorem ipsum dolor</figcaption>
+												</div>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor consequat id porta nibh venenatis. Sed adipiscing diam donec adipiscing. Duis ut diam quam nulla porttitor massa id neque aliquam. Facilisi cras fermentum odio eu feugiat pretium. Massa sapien faucibus et molestie ac feugiat sed. Amet mattis vulputate enim nulla aliquet. Nulla aliquet enim tortor at auctor urna nunc id. Sagittis id consectetur purus ut faucibus pulvinar elementum. Vel facilisis volutpat est velit egestas dui. Facilisis volutpat est velit egestas dui id ornare arcu odio. Sit amet commodo nulla facilisi nullam vehicula ipsum. Aliquam nulla facilisi cras fermentum odio eu feugiat pretium. Porta lorem mollis aliquam ut porttitor. Tortor condimentum lacinia quis vel eros donec ac odio. Dolor sit amet consectetur adipiscing. Iaculis urna id volutpat lacus laoreet non curabitur. Vel turpis nunc eget lorem dolor sed viverra ipsum. In ornare quam viverra orci sagittis eu. Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec.
+
+Consequat interdum varius sit amet mattis vulputate enim nulla aliquet. Bibendum enim facilisis gravida neque convallis a cras semper auctor. Dui id ornare arcu odio ut. Orci ac auctor augue mauris. Faucibus et molestie ac feugiat sed. Ut sem nulla pharetra diam. Potenti nullam ac tortor vitae purus. In metus vulputate eu scelerisque felis. Tempor nec feugiat nisl pretium fusce. Nec tincidunt praesent semper feugiat nibh sed pulvinar. Sagittis id consectetur purus ut.
+
+Sit amet porttitor eget dolor morbi non arcu risus. Orci dapibus ultrices in iaculis nunc. Id neque aliquam vestibulum morbi blandit cursus risus. Ultricies mi eget mauris pharetra et ultrices neque ornare. Adipiscing commodo elit at imperdiet dui accumsan. Faucibus a pellentesque sit amet porttitor. Venenatis tellus in metus vulputate. Non diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Purus in mollis nunc sed id semper risus in hendrerit. In massa tempor nec feugiat nisl pretium. Tortor pretium viverra suspendisse potenti nullam ac. Sit amet consectetur adipiscing elit pellentesque habitant. Ut consequat semper viverra nam libero justo laoreet sit amet. Non arcu risus quis varius quam quisque id. Aenean sed adipiscing diam donec adipiscing tristique risus nec feugiat. Lacus laoreet non curabitur gravida arcu ac. Quis lectus nulla at volutpat diam. Augue mauris augue neque gravida in fermentum et sollicitudin ac.
+
+Sit amet justo donec enim diam vulputate. Adipiscing commodo elit at imperdiet dui accumsan sit. Ac tortor dignissim convallis aenean et tortor at. Sit amet risus nullam eget felis eget nunc lobortis. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. Mi proin sed libero enim sed faucibus turpis in eu. Sit amet aliquam id diam maecenas ultricies. Nisi vitae suscipit tellus mauris a diam maecenas. Pellentesque pulvinar pellentesque habitant morbi tristique senectus et netus. Cursus euismod quis viverra nibh cras pulvinar mattis. Nisi quis eleifend quam adipiscing vitae proin sagittis. Diam quam nulla porttitor massa. Diam donec adipiscing tristique risus nec feugiat in fermentum. Sagittis id consectetur purus ut faucibus. Commodo nulla facilisi nullam vehicula. Ipsum dolor sit amet consectetur adipiscing elit duis. Arcu risus quis varius quam quisque id diam vel quam. Aenean sed adipiscing diam donec adipiscing tristique risus.
+
+Et malesuada fames ac turpis egestas maecenas pharetra convallis. Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Eu ultrices vitae auctor eu augue ut lectus arcu bibendum. Fames ac turpis egestas sed tempus. Nulla aliquet enim tortor at auctor. Nam at lectus urna duis convallis convallis tellus id interdum. Turpis cursus in hac habitasse platea dictumst quisque sagittis. Turpis cursus in hac habitasse platea dictumst. Morbi leo urna molestie at elementum eu facilisis sed odio. Semper auctor neque vitae tempus quam pellentesque nec nam aliquam. Dictum varius duis at consectetur lorem donec massa sapien. Auctor eu augue ut lectus arcu bibendum at varius. Velit ut tortor pretium viverra suspendisse potenti nullam ac. Nulla facilisi cras fermentum odio eu feugiat pretium nibh ipsum. Urna duis convallis convallis tellus. Consequat nisl vel pretium lectus quam id leo in vitae. Ut sem nulla pharetra diam sit. Integer feugiat scelerisque varius morbi enim nunc. Eu facilisis sed odio morbi quis.</span>
+										</div>
+
+									</div>
+
+									<div class="flex-column flex-fill mail" style="overflow-y: auto;" id="mail-009">
+
+										<div class="flex-fill p-2 border border-secondary border-opacity-25" id="">
+											<!-- Mail header and close button -->
+											<div class="d-flex justify-content-between w-100 ">
+												<span class="" id="">Mate, our Easter catalogie has arrived!</span>
+												<label class="" role="button" for="content-empty"><i class="bi bi-x-lg fs-5"></i></label>
+											</div>
+											<div class="">
+												<div class=""><span style="color: var(--ma-mail-list-body-color);">From : </span>Kmart</div>
+												<div class="small d-inline"><span style="color: var(--ma-mail-list-body-color);">To : </span>Guest</div>
+												<div class="small float-end">26 Dec</div>
+											</div>
+											<hr class="my-2" />
+											<!-- Mail body -->
+											<span class="d-block px-2" style="overflow-y: auto; text-align: justify;">
+												<div class="figure m-4 p-4 border border-secondary border-opacity-25 text-center" style="float: right;">
+													<i class="bi bi-gift fs-1 figure-img img-fluid rounded"></i>
+													<figcaption class="figure-caption">Lorem ipsum dolor</figcaption>
+												</div>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor consequat id porta nibh venenatis. Sed adipiscing diam donec adipiscing. Duis ut diam quam nulla porttitor massa id neque aliquam. Facilisi cras fermentum odio eu feugiat pretium. Massa sapien faucibus et molestie ac feugiat sed. Amet mattis vulputate enim nulla aliquet. Nulla aliquet enim tortor at auctor urna nunc id. Sagittis id consectetur purus ut faucibus pulvinar elementum. Vel facilisis volutpat est velit egestas dui. Facilisis volutpat est velit egestas dui id ornare arcu odio. Sit amet commodo nulla facilisi nullam vehicula ipsum. Aliquam nulla facilisi cras fermentum odio eu feugiat pretium. Porta lorem mollis aliquam ut porttitor. Tortor condimentum lacinia quis vel eros donec ac odio. Dolor sit amet consectetur adipiscing. Iaculis urna id volutpat lacus laoreet non curabitur. Vel turpis nunc eget lorem dolor sed viverra ipsum. In ornare quam viverra orci sagittis eu. Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec.
+
+Consequat interdum varius sit amet mattis vulputate enim nulla aliquet. Bibendum enim facilisis gravida neque convallis a cras semper auctor. Dui id ornare arcu odio ut. Orci ac auctor augue mauris. Faucibus et molestie ac feugiat sed. Ut sem nulla pharetra diam. Potenti nullam ac tortor vitae purus. In metus vulputate eu scelerisque felis. Tempor nec feugiat nisl pretium fusce. Nec tincidunt praesent semper feugiat nibh sed pulvinar. Sagittis id consectetur purus ut.
+
+Sit amet porttitor eget dolor morbi non arcu risus. Orci dapibus ultrices in iaculis nunc. Id neque aliquam vestibulum morbi blandit cursus risus. Ultricies mi eget mauris pharetra et ultrices neque ornare. Adipiscing commodo elit at imperdiet dui accumsan. Faucibus a pellentesque sit amet porttitor. Venenatis tellus in metus vulputate. Non diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Purus in mollis nunc sed id semper risus in hendrerit. In massa tempor nec feugiat nisl pretium. Tortor pretium viverra suspendisse potenti nullam ac. Sit amet consectetur adipiscing elit pellentesque habitant. Ut consequat semper viverra nam libero justo laoreet sit amet. Non arcu risus quis varius quam quisque id. Aenean sed adipiscing diam donec adipiscing tristique risus nec feugiat. Lacus laoreet non curabitur gravida arcu ac. Quis lectus nulla at volutpat diam. Augue mauris augue neque gravida in fermentum et sollicitudin ac.
+
+Sit amet justo donec enim diam vulputate. Adipiscing commodo elit at imperdiet dui accumsan sit. Ac tortor dignissim convallis aenean et tortor at. Sit amet risus nullam eget felis eget nunc lobortis. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. Mi proin sed libero enim sed faucibus turpis in eu. Sit amet aliquam id diam maecenas ultricies. Nisi vitae suscipit tellus mauris a diam maecenas. Pellentesque pulvinar pellentesque habitant morbi tristique senectus et netus. Cursus euismod quis viverra nibh cras pulvinar mattis. Nisi quis eleifend quam adipiscing vitae proin sagittis. Diam quam nulla porttitor massa. Diam donec adipiscing tristique risus nec feugiat in fermentum. Sagittis id consectetur purus ut faucibus. Commodo nulla facilisi nullam vehicula. Ipsum dolor sit amet consectetur adipiscing elit duis. Arcu risus quis varius quam quisque id diam vel quam. Aenean sed adipiscing diam donec adipiscing tristique risus.
+
+Et malesuada fames ac turpis egestas maecenas pharetra convallis. Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Eu ultrices vitae auctor eu augue ut lectus arcu bibendum. Fames ac turpis egestas sed tempus. Nulla aliquet enim tortor at auctor. Nam at lectus urna duis convallis convallis tellus id interdum. Turpis cursus in hac habitasse platea dictumst quisque sagittis. Turpis cursus in hac habitasse platea dictumst. Morbi leo urna molestie at elementum eu facilisis sed odio. Semper auctor neque vitae tempus quam pellentesque nec nam aliquam. Dictum varius duis at consectetur lorem donec massa sapien. Auctor eu augue ut lectus arcu bibendum at varius. Velit ut tortor pretium viverra suspendisse potenti nullam ac. Nulla facilisi cras fermentum odio eu feugiat pretium nibh ipsum. Urna duis convallis convallis tellus. Consequat nisl vel pretium lectus quam id leo in vitae. Ut sem nulla pharetra diam sit. Integer feugiat scelerisque varius morbi enim nunc. Eu facilisis sed odio morbi quis.</span>
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+						<!--/div-->
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+		
+		<!-- Alert form -->
+		<!--div class="w-100 position-fixed bottom-0 start-0" id="alertInfo">
+			<div class="alert alert-primary alert-dismissible fade show mx-auto w-75" role="alert">
+				<i class="bi bi-info-circle-fill"></i>
+				A simple info alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		</div-->
+
+		<!-- Modal forms -->
+		<!-- Settings -->
+		<div class="modal fade" id="modalSettings" tabindex="-1" aria-labelledby="modalSettings" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+				<div class="modal-content panel">
+					<div class="modal-header py-1 mm-title">
+						<h5 class="modal-title" id="modalSettings">Settings</h5>
+						<!--button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancel"></button-->
+						<!--a href="" class="" data-bs-dismiss="modal" aria-label="Cancel" style=""><i class="bi bi-x-lg fs-5 modal-header-close-btn"></i></a-->
+						<label class="" role="button" for="nSettings"><i class="bi bi-x-lg fs-5"></i></label>
+
+					</div>
+					<div class="modal-body p-0">
+
+						<!-- Nav tabs -->
+						<ul class="nav nav-pills px-2" id="" role="tablist">
+							<li class="nav-item" role="presentation">
+								<label class="nav-link py-0 my-1 px-3" role="button" for="tabThemes">Themes</label>
+							</li>
+							<li class="nav-item" role="presentation">
+								<label class="nav-link py-0 my-1 px-3" role="button" for="tabMail">Mail</label>
+							</li>
+							<li class="nav-item" role="presentation">
+								<label class="nav-link py-0 my-1 px-3" role="button" for="tabMessages">Messages</label>
+							</li>
+							<li class="nav-item" role="presentation">
+								<label class="nav-link py-0 my-1 px-3" role="button" for="tabSettings">Settings</label>
+							</li>
+						</ul>
+
+						<!-- Tab panes -->
+						<div class="tab-content p-3">
+							<div class="tab-pane" id="pills-themes" role="tabpanel" aria-labelledby="pills-themes" tabindex="0">
+								<div class="container">
+									<p class="fs-6"><!--i class="bi bi-palette fs-4 me-2"></i-->Main colour</p>
+									<div class="d-flex flex-wrap text-center g-3" id="colours">
+										<label class="theme" role="button" for="tWhite">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-white); color: var(--bs-dark);">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tLight">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-gray-200); color: var(--bs-dark);">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tGray">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-gray-400); color: var(--bs-dark);">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tDark">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-gray-dark); color: var(--bs-gray-200);">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tBlue">
+											<div class="p-2 border text-nowrap" style="background-color: var(--mm-blue-600); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tBlue-700">
+											<div class="p-2 border text-nowrap" style="background-color: var(--mm-blue-700); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tBlue-800">
+											<div class="p-2 border text-nowrap" style="background-color: var(--mm-blue-800); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tBlue-900">
+											<div class="p-2 border text-nowrap" style="background-color: var(--mm-blue-900); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tIndigo">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-indigo); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tIndigo-600">
+											<div class="p-2 border text-nowrap" style="background-color: var(--ma-indigo-600); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tIndigo-700">
+											<div class="p-2 border text-nowrap" style="background-color: var(--ma-indigo-700); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tIndigo-800">
+											<div class="p-2 border text-nowrap" style="background-color: var(--ma-indigo-800); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tIndigo-900">
+											<div class="p-2 border text-nowrap" style="background-color: var(--ma-indigo-900); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tPurple">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-purple); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tPurple-800">
+											<div class="p-2 border text-nowrap" style="background-color: var(--mm-purple-800); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tPink">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-pink); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tPink-800">
+											<div class="p-2 border text-nowrap" style="background-color: var(--mm-pink-800); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tRed">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-red); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tRed-800">
+											<div class="p-2 border text-nowrap" style="background-color: var(--mm-red-800); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tOrange">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-orange); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tOrange-800">
+											<div class="p-2 border text-nowrap" style="background-color: var(--mm-orange-800); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tYellow">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-yellow); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tYellow-800">
+											<div class="p-2 border text-nowrap" style="background-color: var(--mm-yellow-800); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tGreen">
+											<div class="p-2 border text-nowrap" style="background-color: #146c43; color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tGreen-800">
+											<div class="p-2 border text-nowrap" style="background-color: var(--mm-green-800); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tTeal">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-teal); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tTeal-800">
+											<div class="p-2 border text-nowrap" style="background-color: var(--mm-teal-800); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tCyan">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-cyan); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+										<label class="theme" role="button" for="tCyan-800">
+											<div class="p-2 border text-nowrap" style="background-color: var(--mm-cyan-800); color: white;">
+												<i class="bi bi-droplet me-2"></i>
+											</div>
+										</label>
+									</div>
+								</div>
+
+								<div class="my-4">
+								</div>
+
+								<div class="container">
+									<p class="fs-6"><!--i class="bi bi-layout-sidebar fs-4 me-2"></i-->Sidebar</p>
+									<div class="d-flex flex-wrap text-center g-2">
+										<label class="theme" role="button" for="sWhite">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-white); color: var(--bs-gray-900);">
+												<i class="bi bi-square-half me-2"></i><span>White</span>
+											</div>
+										</label>
+										<label class="theme" role="button" for="sGray-100">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-gray-100); color: var(--bs-gray-900);">
+												<i class="bi bi-square-half me-2"></i><span>Gray-100</span>
+											</div>
+										</label>
+										<label class="theme" role="button" for="sGray-200">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-gray-200); color: var(--bs-gray-900);">
+												<i class="bi bi-square-half me-2"></i><span>Gray-200</span>
+											</div>
+										</label>
+										<label class="theme" role="button" for="sGray-300">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-gray-300); color: var(--bs-gray-900);">
+												<i class="bi bi-square-half me-2"></i><span>Gray-300</span>
+											</div>
+										</label>
+										<label class="theme" role="button" for="sGray-400">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-gray-400); color: var(--bs-gray-900);">
+												<i class="bi bi-square-half me-2"></i><span>Gray-400</span>
+											</div>
+										</label>
+										<label class="theme" role="button" for="sGray-500">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-gray-500); color: var(--bs-gray-900);">
+												<i class="bi bi-square-half me-2"></i><span>Gray-500</span>
+											</div>
+										</label>
+										<label class="theme" role="button" for="sGray-600">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-gray-600); color: var(--bs-gray-100);">
+												<i class="bi bi-square-half me-2"></i><span>Gray-600</span>
+											</div>
+										</label>
+										<label class="theme" role="button" for="sGray-700">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-gray-700); color: var(--bs-gray-100);">
+												<i class="bi bi-square-half me-2"></i><span>Gray-700</span>
+											</div>
+										</label>
+										<label class="theme" role="button" for="sGray-800">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-gray-800); color: var(--bs-gray-100);">
+												<i class="bi bi-square-half me-2"></i><span>Gray-800</span>
+											</div>
+										</label>
+										<label class="theme" role="button" for="sGray-900">
+											<div class="p-2 border text-nowrap" style="background-color: var(--bs-gray-900); color: var(--bs-gray-100);">
+												<i class="bi bi-square-half me-2"></i><span>Gray-900</span>
+											</div>
+										</label>
+									</div>
+								</div>
+
+
+								<div class="my-4">
+								</div>
+
+								<div class="container d-flex">
+									<p class="fs-6 me-4"><!--i class="bi bi-layout-sidebar fs-4 me-2"></i-->Dark mode : </p><label class="switch round" for="cDark"></label>
+									<div class="d-flex flex-wrap text-center g-2">
+										<!--label class="switch round" for="cDark"></label-->
+									</div>
+								</div>
+
+							</div>
+							<div class="tab-pane" id="pills-mail" role="tabpanel" aria-labelledby="pills-mail" tabindex="0">
+								<div class="container">
+									<p class="fs-6"><!--i class="bi bi-layout-sidebar fs-4 me-2"></i-->Layout</p>
+									<div class="d-flex flex-wrap text-center g-2">
+										<label class="layout" role="button" for="lRight">
+											<div class="d-flex justify-content-center p-1 border text-nowrap" style="">
+												<i class="bi bi-layout-sidebar fs-1 me-2"></i>
+												<span class="my-auto">Right</span>
+											</div>
+										</label>
+										<div class="mx-4"></div>
+										<label class="layout" role="button" for="lBottom">
+											<div class="d-flex justify-content-center p-1 border text-nowrap" style="">
+												<i class="bi bi-layout-split fs-1 me-2" style="transform: rotate(90deg);"></i>
+												<span class="my-auto">Bottom</span>
+											</div>
+										</label>
+										<div class="mx-4"></div>
+										<label class="layout" role="button" for="lHidden">
+											<div class="d-flex justify-content-center p-1 border text-nowrap" style="">
+												<i class="bi bi-square fs-1 me-2"></i>
+												<span class="my-auto">Hidden</span>
+											</div>
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane" id="pills-messages" role="tabpanel" aria-labelledby="pills-messages" tabindex="0">Messages...</div>
+							<div class="tab-pane" id="pills-settings" role="tabpanel" aria-labelledby="pills-settings" tabindex="0">Settings...</div>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<!--button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button-->
+						<label class="btn btn-secondary" role="button" for="nSettings">Close</label>
+
+						<!--a href="" class="btn btn-warning">Save</a-->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- User -->
+		<div class="modal fade" id="modalUser" tabindex="-1" aria-labelledby="modalUser" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+				<div class="modal-content panel">
+					<div class="modal-header py-1 mm-title">
+						<h5 class="modal-title" id="modalUser">User</h5>
+						<label class="" role="button" for="nUser"><i class="bi bi-x-lg fs-5"></i></label>
+
+					</div>
+					<div class="modal-body p-0">
+
+						<!--span>Email address :</span>
+						<span>ID :</span-->
+						<div class="container text-start">
+							<div class="row py-1">
+								<div class="col-4 text-center my-auto"><i class="bi bi-person fs-1"></i></div>
+								<div class="col-8">
+									<div class="row">
+										<div class="col-4">Name :</div>
+										<div class="col-8 fw-light">Guest</div>
+									</div>
+									<div class="row">
+										<div class="col-4">Email :</div>
+										<div class="col-8 fw-light">Guest@mimosa.com.au</div>
+									</div>
+									<div class="row">
+										<div class="col-4">ID :</div>
+										<div class="col-8 fw-light">1234567890</div>
+									</div>
+								</div>
+							</div>
+							<div class="row py-1">
+								<div class="col-4">Description :</div>
+								<div class="col-8 fw-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</div>
+							</div>
+							<div class="row py-1">
+								<div class="col-4">Last Modified :</div>
+								<div class="col-8 fw-light">2022-02-02 10:48</div>
+							</div>
+							<div class="row py-1">
+								<div class="col-4">Last Login :</div>
+								<div class="col-8 fw-light">2022-02-02 10:48</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<!--button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button-->
+						<label class="btn btn-secondary" role="button" for="nUser">Close</label>
+
+						<!--a href="" class="btn btn-warning">Save</a-->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Logout -->
+		<div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="modalLogout" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content rounded-3 shadow panel">
+					<div class="modal-body p-4 text-center">
+						<h5 class="mb-0">Logout</h5>
+						<p class="mb-0">Do you want to exit the application ?</p>
+					</div>
+					<div class="modal-footer flex-nowrap p-0">
+						<a href="login.html" class="btn btn-lg btn-link btn-logout fs-6 text-decoration-none col-6 m-0 rounded-0 border-end"><strong>Yes, logout</strong></a>
+						<!--button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end"><strong>Yes, logout</strong></button-->
+						<!--button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-bs-dismiss="modal">No thanks</button-->
+						<label class="btn btn-lg btn-link btn-logout fs-6 text-decoration-none col-6 m-0 rounded-0" role="button" for="nLogout">No thanks</label>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>

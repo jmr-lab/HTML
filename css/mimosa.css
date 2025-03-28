@@ -1,0 +1,200 @@
+.list-group-item.active {
+	background-color: var(--bs-gray-600);
+	border-color: var(--bs-gray-700);
+}
+.page-link {
+	font-size: 12px;
+}
+#collapse, #offcanvas {
+	background-color: var(--bs-gray-700);
+	color: var(--bs-gray-100);
+}
+#myList .list-group-item {
+	background-color: var(--bs-gray-700);
+	border-color: var(--bs-gray-700);
+	border-width: 0 4px 0 0;
+}
+#myList .list-group-item.active {
+	border-color: var(--bs-warning);
+	border-width: 0 4px 0 0;
+}
+
+#actions .btn-outline-secondary {
+	--bs-btn-hover-bg: var(--bs-dark-bg-subtle);
+	--bs-btn-hover-bg: var(--bs-gray-300);
+}
+#actions .btn-check:checked + .btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check) + .btn:active {
+	background-color: var(--bs-gray-300);
+}
+.navbar-toggler:focus {
+	box-shadow: none!important;
+}
+#moreactions.btn-check:checked + #moreactions.btn, #moreactions.btn.active, #moreactions.btn.show, #moreactions.btn:first-child:active, :not(#moreactions.btn-check) + #moreactions.btn:active {
+	color: var(--bs-dark);
+	background-color: var(--bs-white);
+	border-color: var(--bs-white);
+}
+#moreactions.btn:hover {
+	color: var(--bs-dark);
+	background-color: var(--bs-white);
+	border-color: var(--bs-white);
+}
+#moreactions.dropdown-toggle::after {
+	display: none;
+}
+#menumoreactions.dropdown-menu {
+	--bs-dropdown-min-width: 0;
+}
+.form-check-input:checked + .card {
+	border: 1px solid var(--bs-secondary);
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: var(--bs-secondary) 0px 3px 8px;
+}
+.card-select {
+}
+.card-select > i {
+	color: var(--bs-white);
+	background-color: var(--bs-white);
+	border: 1px solid var(--bs-gray-400);
+	border-radius: 4px;
+	height: 24px;
+	width: 24px;
+	margin-right: 18px;
+}
+.form-check-input:checked + .card > .row > .card-header > .card-select > i {
+	background-color: var(--bs-success);
+}
+.form-check-input:checked + label > i {
+	background-color: var(--bs-success);
+}
+.card-header {
+	-webkit-user-select: none;  
+	-moz-user-select: none;    
+	-ms-user-select: none;      
+	user-select: none;
+}
+.list-group-item {
+	background-color: var(--bs-gray-100);
+}
+.lblRow > .bi-check-lg {
+	color: var(--bs-white);
+	background-color: var(--bs-white);
+	border: 1px solid var(--bs-gray-400);
+	border-radius: 4px;
+	height: 24px;
+	width: 24px;
+}
+.lblRow > .bi-check-lg::before {
+	vertical-align: 0em;
+}
+.form-check-input + div > .lblObj > .row > .lblRow > .bi-check-lg {
+	background-color: var(--bs-gray-200);
+	color: var(--bs-gray-200);
+}
+.form-check-input:checked + div > .lblObj > .row > .lblRow > .bi-check-lg {
+	background-color: var(--bs-success);
+}
+.form-check-input + div > .lblObj > .row > .lblRow > .bi-lock {
+	color: var(--bs-gray-400);
+}
+.form-check-input:checked + div > .lblObj > .row > .lblRow > .bi-lock {
+	color: var(--bs-gray-400);
+}
+.form-check-input:checked + div {
+	background-color: var(--bs-gray-200);
+}
+.content {
+	background-color: var(--bs-gray-200);
+}
+.form-check-input + div:hover {
+	background-color: #dbe6e5;
+}
+.form-check-input:checked + div:hover {
+	background-color: #c6ded5;
+}
+.form-check-input + div {
+	background-color: var(--bs-gray-100);
+}
+
+
+#collapse {
+	float: left;
+}
+#offcanvas {
+	max-width: 250px;
+}
+#myList {
+	width: 40px;
+}
+.tab-content {
+	width: 210px;
+}
+#navbar_1 {
+	background-color: var(--bs-light);
+}
+#navbar_2 {
+	background-color: var(--bs-gray-200); border-bottom: 1px solid var(--bs-gray-400);
+}
+#mynavbar > div > .text-dark {
+	margin:0 auto;
+}
+#mynavbar > div > .text-dark > div > .bi-search {
+	font-size:16px;
+}
+#actionbar {
+	height: 38px;
+}
+#actions > .list-group-item {
+	white-space: nowrap;
+}
+#actions > .vr {
+	min-height: 1px;
+}
+#actions > .list-group-item > .btn > .bi-clipboard-plus {
+	color: var(--bs-orange);
+}
+#content {
+}
+#maincontent {
+	background-color: var(--bs-gray-100);
+}
+#pagination > nav > p {
+	color: rgba(33, 37, 41, 0.75);
+}
+.lblObj {
+	height: 138px;
+}
+.lblRow {
+	height: 40px;
+}
+.lblObj > .row > div > text-center {
+	width: 116px;
+	border: 1px solid var(--bs-gray-400);
+}
+.lblObj > .row > div > div > .bi {
+	font-size: 64px;
+}
+#titleObj {
+	height: 42px;
+}
+#barObj {
+	width: 180px;
+	height: 1px;
+}
+th > .card-select > .bi {
+	margin-right: 4px;
+}
+@media screen and (min-width: 700px) {
+	#maillist {
+		max-width: 350px;
+	}
+}
+@media screen and (max-width: 700px) {
+	#mailoffcanvas {
+		width: 100%;
+	}
+}
+#alertInfo {
+	z-index: 999;
+}
