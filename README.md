@@ -1,5 +1,7 @@
 # Lightweight mail-client demo
 
+The text below was written by Proton Lumo :
+
 <div class="w-full"><div class="progressive-markdown-content">
   <div class="content-visibility-auto"><p>The <code>inbox.html</code> is a <strong>self‑contained, static web page</strong> that implements a very lightweight “mail‑client” UI.<br>
 It is built with plain HTML, CSS (mostly custom variables) and a handful of Bootstrap assets (icons, grid utilities).<br>
@@ -29,5 +31,5 @@ All interactive behaviour – opening a folder, selecting a message, toggling th
 <p><code>inbox.html</code> is a <strong>demo of a minimalist, responsive mail‑client UI built entirely with HTML and CSS</strong>. By leveraging hidden checkboxes/radios and CSS selectors, it mimics many of the interactions you’d expect from Outlook (folder navigation, message preview, theme switching, layout changes) while staying extremely lightweight—no JavaScript, no server calls, and immediate rendering.</p>
 <p>It showcases how far you can push pure‑CSS interactivity for a polished look, but it remains a <strong>static prototype</strong>; to become a functional email client you would need to add a data layer (API calls, authentication, storage) and probably some JavaScript for richer behaviours and accessibility. Nonetheless, as a proof‑of‑concept it demonstrates that a responsive inbox UI can indeed be built with just checkboxes and CSS, delivering very fast load and interaction times.</p></div></div></div>
 
-# HTML
+# Demo
 Test the file : https://html-preview.github.io/?url=https://raw.githubusercontent.com/jmr-lab/HTML/main/inbox.html
