@@ -1,5 +1,9 @@
 # Lightweight mail-client demo
 
+I believe in crafting software that exemplifies efficiency and simplicity. There's no reason our tools can't be both beautiful and fast. While applications like Outlook or others offer an aesthetically pleasing experience, they can often feel sluggish and cumbersome.
+
+With this lightweight mail-client demo, I aim to demonstrate that we can achieve great functionality without unnecessary complexity. It’s about building solutions that are streamlined and responsive, allowing users to connect effortlessly. 
+
 The text below was written by Proton Lumo :
 
 <div class="w-full"><div class="progressive-markdown-content">
