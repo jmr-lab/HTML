@@ -37,3 +37,17 @@ All interactive behaviour – opening a folder, selecting a message, toggling th
 
 # Demo
 Test the file : https://html-preview.github.io/?url=https://raw.githubusercontent.com/jmr-lab/HTML/main/inbox.html
+
+# Screenshots
+
+## Login
+![Login screen](./screenshots/Screenshot%202026-08-13%20at%2008-01-10%20Mimosa.png)
+Short description: Login form and confirmation prompt for signing in.
+
+## Access / Logout flow
+![Logout confirmation](./screenshots/Screenshot%202026-08-13%20at%2008-01-13%20Mimosa.png)
+Short description: View showing the “Signed out/blocked access” state after logout.
+
+## User profile
+![User profile](./screenshots/Screenshot%202026-08-13%20at%2008-01-17%20Mimosa.png)
+Short description: Profile page with user details and account-related information.
