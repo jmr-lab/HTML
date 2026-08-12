@@ -58,13 +58,13 @@ Short description: View showing the “Signed out/blocked access” state after 
 </p>
 Short description: Profile page with user details and account-related information.
 
-## No access / Signed out state (new)
+## Dark mode toggle
 <p align="center">
   <img src="./screenshots/Screenshot%202026-08-13%20at%2008-02-00%20Mimosa.png" width="80%">
 </p>
-Short description: View indicating the user doesn’t have access (read-only/locked state).
+Short description: Dark mode view toggled from the light bulb icon; clicking it again returns to the normal (white/clear) mode.
 
-## Settings / UI preview (new)
+## Settings / UI preview
 <p align="center">
   <img src="./screenshots/Screenshot%202026-08-13%20at%2008-02-15%20Mimosa.png" width="80%">
 </p>
