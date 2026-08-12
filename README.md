@@ -57,3 +57,15 @@ Short description: View showing the “Signed out/blocked access” state after 
   <img src="./screenshots/Screenshot%202026-08-13%20at%2008-01-22%20Mimosa.png" width="80%">
 </p>
 Short description: Profile page with user details and account-related information.
+
+## No access / Signed out state (new)
+<p align="center">
+  <img src="./screenshots/Screenshot%202026-08-13%20at%2008-02-00%20Mimosa.png" width="80%">
+</p>
+Short description: View indicating the user doesn’t have access (read-only/locked state).
+
+## Settings / UI preview (new)
+<p align="center">
+  <img src="./screenshots/Screenshot%202026-08-13%20at%2008-02-15%20Mimosa.png" width="80%">
+</p>
+Short description: Settings-style screen showing configuration options and controls.
