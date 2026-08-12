@@ -41,13 +41,19 @@ Test the file : https://html-preview.github.io/?url=https://raw.githubuserconten
 # Screenshots
 
 ## Login
-![Login screen](./screenshots/Screenshot%202026-08-13%20at%2008-01-10%20Mimosa.png)
+<p align="center">
+  <img src="./screenshots/Screenshot%202026-08-13%20at%2008-01-10%20Mimosa.png" width="80%">
+</p>
 Short description: Login form and confirmation prompt for signing in.
 
 ## Access / Logout flow
-![Logout confirmation](./screenshots/Screenshot%202026-08-13%20at%2008-01-13%20Mimosa.png)
+<p align="center">
+  <img src="./screenshots/Screenshot%202026-08-13%20at%2008-01-33%20Mimosa.png" width="80%">
+</p>
 Short description: View showing the “Signed out/blocked access” state after logout.
 
 ## User profile
-![User profile](./screenshots/Screenshot%202026-08-13%20at%2008-01-17%20Mimosa.png)
+<p align="center">
+  <img src="./screenshots/Screenshot%202026-08-13%20at%2008-01-22%20Mimosa.png" width="80%">
+</p>
 Short description: Profile page with user details and account-related information.
