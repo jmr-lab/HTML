@@ -5,11 +5,13 @@ I believe in crafting software that exemplifies efficiency and simplicity. There
 With this lightweight mail-client demo, I aim to demonstrate that we can achieve great functionality without unnecessary complexity. It’s about building solutions that are streamlined and responsive, allowing users to connect effortlessly. 
 
 ## Table of Contents
+<a id="toc"></a>
 - [Description](#description)
 - [Demo](#demo)
 - [Screenshots](#screenshots)
 
 # Description
+[Back to TOC](#toc)
 
 The text below was written by Proton Lumo :
 
@@ -43,9 +45,12 @@ All interactive behaviour – opening a folder, selecting a message, toggling th
 <p>It showcases how far you can push pure‑CSS interactivity for a polished look, but it remains a <strong>static prototype</strong>; to become a functional email client you would need to add a data layer (API calls, authentication, storage) and probably some JavaScript for richer behaviours and accessibility. Nonetheless, as a proof‑of‑concept it demonstrates that a responsive inbox UI can indeed be built with just checkboxes and CSS, delivering very fast load and interaction times.</p></div></div></div>
 
 # Demo
+[Back to TOC](#toc)
+
 Test the file : https://html-preview.github.io/?url=https://raw.githubusercontent.com/jmr-lab/HTML/main/inbox.html
 
 # Screenshots
+[Back to TOC](#toc)
 
 ## Login
 <p align="center">
