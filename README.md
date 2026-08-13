@@ -4,6 +4,13 @@ I believe in crafting software that exemplifies efficiency and simplicity. There
 
 With this lightweight mail-client demo, I aim to demonstrate that we can achieve great functionality without unnecessary complexity. It’s about building solutions that are streamlined and responsive, allowing users to connect effortlessly. 
 
+## Table of Contents
+- [Description](#description)
+- [Demo](#demo)
+- [Screenshots](#screenshots)
+
+# Description
+
 The text below was written by Proton Lumo :
 
 <div class="w-full"><div class="progressive-markdown-content">
