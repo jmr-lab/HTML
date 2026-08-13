@@ -111,3 +111,13 @@ Short description: Layout where the content is hidden.
   <img src="./screenshots/Screenshot%202026-08-13%20at%2008-07-01%20Mimosa.png" width="80%">
 </p>
 Short description: Left pane shown in dark grey styling with blue theme.
+
+## Screenshots (Mobile layout)
+
+<div align="center">
+  <img src="./screenshots/Screenshot%202026-08-13%20at%2009-22-27%20Mimosa.png" width="30%">
+  <img src="./screenshots/Screenshot%202026-08-13%20at%2009-23-39%20Mimosa.png" width="30%">
+  <img src="./screenshots/Screenshot%202026-08-13%20at%2009-24-10%20Mimosa.png" width="30%">
+</div>
+
+Short description: Mobile rendering showing the left pane, the new email compose view, and the mail list.
