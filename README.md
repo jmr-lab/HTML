@@ -69,3 +69,45 @@ Short description: Dark mode view toggled from the light bulb icon; clicking it 
   <img src="./screenshots/Screenshot%202026-08-13%20at%2008-02-15%20Mimosa.png" width="80%">
 </p>
 Short description: Settings-style screen showing configuration options and controls.
+
+## Write new email
+<p align="center">
+  <img src="./screenshots/Screenshot%202026-08-13%20at%2008-02-39%20Mimosa.png" width="80%">
+</p>
+Short description: Compose screen to write a new email.
+
+## Read email
+<p align="center">
+  <img src="./screenshots/Screenshot%202026-08-13%20at%2008-02-47%20Mimosa.png" width="80%">
+</p>
+Short description: Email reader view for displaying message content.
+
+## Theme shortcuts (left pane)
+<p align="center">
+  <img src="./screenshots/Screenshot%202026-08-13%20at%2008-03-05%20Mimosa.png" width="80%">
+</p>
+Short description: Shortcuts for switching themes.
+
+## Mail disposition: content on the right
+<p align="center">
+  <img src="./screenshots/Screenshot%202026-08-13%20at%2008-06-04%20Mimosa.png" width="80%">
+</p>
+Short description: Layout where the content is displayed on the right side.
+
+## Mail disposition: content on the bottom
+<p align="center">
+  <img src="./screenshots/Screenshot%202026-08-13%20at%2008-05-33%20Mimosa.png" width="80%">
+</p>
+Short description: Layout where the content is displayed at the bottom.
+
+## Mail disposition: content hidden
+<p align="center">
+  <img src="./screenshots/Screenshot%202026-08-13%20at%2008-06-04%20Mimosa.png" width="80%">
+</p>
+Short description: Layout where the content is hidden.
+
+## Left pane in dark grey
+<p align="center">
+  <img src="./screenshots/Screenshot%202026-08-13%20at%2008-07-01%20Mimosa.png" width="80%">
+</p>
+Short description: Left pane shown in dark grey styling.
