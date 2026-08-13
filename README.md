@@ -82,7 +82,7 @@ Short description: Compose screen to write a new email.
 </p>
 Short description: Email reader view for displaying message content.
 
-## Theme shortcuts (left pane)
+## Theme shortcuts
 <p align="center">
   <img src="./screenshots/Screenshot%202026-08-13%20at%2008-03-05%20Mimosa.png" width="80%">
 </p>
@@ -90,7 +90,7 @@ Short description: Shortcuts for switching themes.
 
 ## Mail disposition: content on the right
 <p align="center">
-  <img src="./screenshots/Screenshot%202026-08-13%20at%2008-06-04%20Mimosa.png" width="80%">
+  <img src="./screenshots/Screenshot%202026-08-13%20at%2008-02-47%20Mimosa.png" width="80%">
 </p>
 Short description: Layout where the content is displayed on the right side.
 
@@ -106,8 +106,8 @@ Short description: Layout where the content is displayed at the bottom.
 </p>
 Short description: Layout where the content is hidden.
 
-## Left pane in dark grey
+## Left pane in dark grey with blue theme
 <p align="center">
   <img src="./screenshots/Screenshot%202026-08-13%20at%2008-07-01%20Mimosa.png" width="80%">
 </p>
-Short description: Left pane shown in dark grey styling.
+Short description: Left pane shown in dark grey styling with blue theme.
